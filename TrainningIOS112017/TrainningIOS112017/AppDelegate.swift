@@ -12,10 +12,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    // MARK:- Application stage
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let loginViewController = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateInitialViewController()
+        window?.rootViewController = loginViewController
+        window?.makeKeyAndVisible()
         return true
     }
 
@@ -40,7 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    // MARK:-
+    func showMainTab() {
+        window?.rootViewController = ApplicationObject.getStoryBoardByID(storyBoardID: .main).instantiateInitialViewController()
+        window?.makeKeyAndVisible()
+    }
 }
-
