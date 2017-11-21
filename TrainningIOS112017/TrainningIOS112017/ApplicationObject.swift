@@ -10,6 +10,7 @@ import UIKit
 enum StoryboardID {
     case login
     case main
+    case timeline
 }
 
 class ApplicationObject {
@@ -20,6 +21,8 @@ class ApplicationObject {
             storyboard = UIStoryboard(name: "Login", bundle: nil)
         case .main:
             storyboard = UIStoryboard(name: "Main", bundle: nil)
+        case .timeline:
+            storyboard = UIStoryboard(name: "Timeline", bundle: nil)
         }
         return storyboard
     }

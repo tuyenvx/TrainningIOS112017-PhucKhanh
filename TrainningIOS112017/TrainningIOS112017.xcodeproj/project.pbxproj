@@ -10,13 +10,24 @@
 		5238FDC42B791D39DBC38C44 /* Pods_TrainningIOS112017Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7589B8FE3330792EB420F1F6 /* Pods_TrainningIOS112017Tests.framework */; };
 		55F7965D4BFCF59E42F70272 /* Pods_TrainningIOS112017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE81D912E7787E719AE72A2 /* Pods_TrainningIOS112017.framework */; };
 		8E27CB9D2B7200321EE6AFC7 /* Pods_TrainningIOS112017UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2151674A86A72B2B0E51BBD /* Pods_TrainningIOS112017UITests.framework */; };
+		CC06A0F11FC6576A00548D25 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC06A0F01FC6576A00548D25 /* CommentViewController.swift */; };
+		CC06A0F61FC67AA700548D25 /* StatusInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC06A0F41FC67AA700548D25 /* StatusInfoTableViewCell.swift */; };
+		CC06A0F71FC67AA700548D25 /* StatusInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC06A0F51FC67AA700548D25 /* StatusInfoTableViewCell.xib */; };
+		CC06A0FC1FC6C11C00548D25 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC06A0FB1FC6C11C00548D25 /* Timeline.storyboard */; };
+		CC06A0FE1FC6C21B00548D25 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC06A0FD1FC6C21B00548D25 /* LaunchViewController.swift */; };
 		CC0C162C1FC27D05001C0FB8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C162B1FC27D05001C0FB8 /* LoginViewController.swift */; };
 		CC0C16301FC28062001C0FB8 /* ApplicationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C162F1FC28062001C0FB8 /* ApplicationObject.swift */; };
 		CC0C16321FC29460001C0FB8 /* UIView+Desiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C16311FC29460001C0FB8 /* UIView+Desiable.swift */; };
 		CC0C16341FC2AFF3001C0FB8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C16331FC2AFF3001C0FB8 /* SignUpViewController.swift */; };
+		CC31CA961FC51A0600C0213A /* TimeLinePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31CA951FC51A0600C0213A /* TimeLinePostViewController.swift */; };
+		CC31CAA01FC56ED300C0213A /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31CA9E1FC56ED300C0213A /* CommentTableViewCell.swift */; };
+		CC31CAA11FC56ED300C0213A /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC31CA9F1FC56ED300C0213A /* CommentTableViewCell.xib */; };
 		CC3A122B1FC25BF9008EEBE8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3A122A1FC25BF9008EEBE8 /* Login.storyboard */; };
+		CC6B68E91FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B68E81FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift */; };
+		CC6B68F31FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B68F11FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift */; };
+		CC6B68F41FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC6B68F21FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib */; };
+		CC6B68F61FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B68F51FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift */; };
 		CCD36E981FBEECF70027DC49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD36E971FBEECF70027DC49 /* AppDelegate.swift */; };
-		CCD36E9A1FBEECF70027DC49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD36E991FBEECF70027DC49 /* ViewController.swift */; };
 		CCD36E9D1FBEECF70027DC49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD36E9B1FBEECF70027DC49 /* Main.storyboard */; };
 		CCD36E9F1FBEECF70027DC49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCD36E9E1FBEECF70027DC49 /* Assets.xcassets */; };
 		CCD36EA21FBEECF70027DC49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD36EA01FBEECF70027DC49 /* LaunchScreen.storyboard */; };
@@ -46,14 +57,25 @@
 		8BFC6EC5BD547F915173E183 /* Pods-TrainningIOS112017Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrainningIOS112017Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrainningIOS112017Tests/Pods-TrainningIOS112017Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8FE81D912E7787E719AE72A2 /* Pods_TrainningIOS112017.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrainningIOS112017.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9164F6C19EC1291A9369418D /* Pods-TrainningIOS112017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrainningIOS112017.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrainningIOS112017/Pods-TrainningIOS112017.release.xcconfig"; sourceTree = "<group>"; };
+		CC06A0F01FC6576A00548D25 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		CC06A0F41FC67AA700548D25 /* StatusInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInfoTableViewCell.swift; sourceTree = "<group>"; };
+		CC06A0F51FC67AA700548D25 /* StatusInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusInfoTableViewCell.xib; sourceTree = "<group>"; };
+		CC06A0FB1FC6C11C00548D25 /* Timeline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
+		CC06A0FD1FC6C21B00548D25 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		CC0C162B1FC27D05001C0FB8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CC0C162F1FC28062001C0FB8 /* ApplicationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationObject.swift; sourceTree = "<group>"; };
 		CC0C16311FC29460001C0FB8 /* UIView+Desiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Desiable.swift"; sourceTree = "<group>"; };
 		CC0C16331FC2AFF3001C0FB8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CC31CA951FC51A0600C0213A /* TimeLinePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLinePostViewController.swift; sourceTree = "<group>"; };
+		CC31CA9E1FC56ED300C0213A /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		CC31CA9F1FC56ED300C0213A /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		CC3A122A1FC25BF9008EEBE8 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		CC6B68E81FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewController.swift; sourceTree = "<group>"; };
+		CC6B68F11FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewCell.swift; sourceTree = "<group>"; };
+		CC6B68F21FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLineTableViewCell.xib; sourceTree = "<group>"; };
+		CC6B68F51FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewDataSource.swift; sourceTree = "<group>"; };
 		CCD36E941FBEECF70027DC49 /* TrainningIOS112017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainningIOS112017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD36E971FBEECF70027DC49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CCD36E991FBEECF70027DC49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CCD36E9C1FBEECF70027DC49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CCD36E9E1FBEECF70027DC49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCD36EA11FBEECF70027DC49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -109,13 +131,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CC06A0FF1FC6C21F00548D25 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				CC06A0FD1FC6C21B00548D25 /* LaunchViewController.swift */,
+			);
+			name = Launch;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		CC0C162A1FC27CEB001C0FB8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CC0C162B1FC27D05001C0FB8 /* LoginViewController.swift */,
-				CC0C16331FC2AFF3001C0FB8 /* SignUpViewController.swift */,
+				CC06A0FF1FC6C21F00548D25 /* Launch */,
+				CC7751BE1FC588EC00D0C585 /* Login and SignUp */,
+				CC31CA971FC51A0E00C0213A /* TimeLine */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CC31CA971FC51A0E00C0213A /* TimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				CC6B68E81FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift */,
+				CC31CA951FC51A0600C0213A /* TimeLinePostViewController.swift */,
+				CC06A0F01FC6576A00548D25 /* CommentViewController.swift */,
+			);
+			path = TimeLine;
+			sourceTree = "<group>";
+		};
+		CC31CA9C1FC56EA800C0213A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CC31CA9D1FC56EB200C0213A /* CommentCell */,
+				CC6B68EE1FC3FABA00E3DEE1 /* TimeLineCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CC31CA9D1FC56EB200C0213A /* CommentCell */ = {
+			isa = PBXGroup;
+			children = (
+				CC31CA9E1FC56ED300C0213A /* CommentTableViewCell.swift */,
+				CC31CA9F1FC56ED300C0213A /* CommentTableViewCell.xib */,
+				CC06A0F41FC67AA700548D25 /* StatusInfoTableViewCell.swift */,
+				CC06A0F51FC67AA700548D25 /* StatusInfoTableViewCell.xib */,
+			);
+			path = CommentCell;
 			sourceTree = "<group>";
 		};
 		CC3A122C1FC25BFE008EEBE8 /* Storyboard */ = {
@@ -123,8 +185,28 @@
 			children = (
 				CCD36E9B1FBEECF70027DC49 /* Main.storyboard */,
 				CC3A122A1FC25BF9008EEBE8 /* Login.storyboard */,
+				CC06A0FB1FC6C11C00548D25 /* Timeline.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		CC6B68EE1FC3FABA00E3DEE1 /* TimeLineCell */ = {
+			isa = PBXGroup;
+			children = (
+				CC6B68F11FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift */,
+				CC6B68F21FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib */,
+				CC6B68F51FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift */,
+			);
+			path = TimeLineCell;
+			sourceTree = "<group>";
+		};
+		CC7751BE1FC588EC00D0C585 /* Login and SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				CC0C162B1FC27D05001C0FB8 /* LoginViewController.swift */,
+				CC0C16331FC2AFF3001C0FB8 /* SignUpViewController.swift */,
+			);
+			path = "Login and SignUp";
 			sourceTree = "<group>";
 		};
 		CCD36E8B1FBEECF70027DC49 = {
@@ -152,10 +234,10 @@
 		CCD36E961FBEECF70027DC49 /* TrainningIOS112017 */ = {
 			isa = PBXGroup;
 			children = (
+				CC31CA9C1FC56EA800C0213A /* Cell */,
 				CC0C162A1FC27CEB001C0FB8 /* ViewController */,
 				CC3A122C1FC25BFE008EEBE8 /* Storyboard */,
 				CCD36E971FBEECF70027DC49 /* AppDelegate.swift */,
-				CCD36E991FBEECF70027DC49 /* ViewController.swift */,
 				CCD36E9E1FBEECF70027DC49 /* Assets.xcassets */,
 				CCD36EA01FBEECF70027DC49 /* LaunchScreen.storyboard */,
 				CCD36EA31FBEECF70027DC49 /* Info.plist */,
@@ -313,10 +395,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC6B68F41FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib in Resources */,
+				CC06A0FC1FC6C11C00548D25 /* Timeline.storyboard in Resources */,
+				CC31CAA11FC56ED300C0213A /* CommentTableViewCell.xib in Resources */,
 				CC3A122B1FC25BF9008EEBE8 /* Login.storyboard in Resources */,
 				CCD36EA21FBEECF70027DC49 /* LaunchScreen.storyboard in Resources */,
 				CCD36E9F1FBEECF70027DC49 /* Assets.xcassets in Resources */,
 				CCD36E9D1FBEECF70027DC49 /* Main.storyboard in Resources */,
+				CC06A0F71FC67AA700548D25 /* StatusInfoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,12 +588,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC06A0FE1FC6C21B00548D25 /* LaunchViewController.swift in Sources */,
+				CC31CAA01FC56ED300C0213A /* CommentTableViewCell.swift in Sources */,
 				CC0C16341FC2AFF3001C0FB8 /* SignUpViewController.swift in Sources */,
 				CC0C162C1FC27D05001C0FB8 /* LoginViewController.swift in Sources */,
+				CC6B68E91FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift in Sources */,
+				CC6B68F61FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift in Sources */,
 				CC0C16301FC28062001C0FB8 /* ApplicationObject.swift in Sources */,
 				CC0C16321FC29460001C0FB8 /* UIView+Desiable.swift in Sources */,
-				CCD36E9A1FBEECF70027DC49 /* ViewController.swift in Sources */,
+				CC6B68F31FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift in Sources */,
 				CCD36E981FBEECF70027DC49 /* AppDelegate.swift in Sources */,
+				CC31CA961FC51A0600C0213A /* TimeLinePostViewController.swift in Sources */,
+				CC06A0F11FC6576A00548D25 /* CommentViewController.swift in Sources */,
+				CC06A0F61FC67AA700548D25 /* StatusInfoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
