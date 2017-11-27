@@ -81,7 +81,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="41.5" y="49.5"/>
+            <connections>
+                <outlet property="avatarImageView" destination="V3j-o9-S0n" id="gbF-SU-tBq"/>
+                <outlet property="commentLabel" destination="5Xz-SX-FbD" id="ly2-zV-mfc"/>
+                <outlet property="userNameLabel" destination="nSV-b4-ds0" id="jAv-1t-glb"/>
+            </connections>
+            <point key="canvasLocation" x="39" y="54"/>
         </tableViewCell>
     </objects>
     <resources>

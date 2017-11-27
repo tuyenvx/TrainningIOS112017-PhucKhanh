@@ -40,7 +40,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.57686305049999997" green="0.60093468429999997" blue="0.64931738380000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" red="0.050676025450000002" green="0.4800305963" blue="0.9981866479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_like" translatesAutoresizingMaskIntoConstraints="NO" id="Biv-qA-L8T">
                                 <rect key="frame" x="56.5" y="14" width="15" height="15"/>
@@ -51,6 +51,9 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTp-Q5-lwA">
                                 <rect key="frame" x="0.0" y="0.0" width="163.5" height="43"/>
+                                <connections>
+                                    <action selector="like:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VE5-PD-Noa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,7 +80,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.57686305049999997" green="0.60093468429999997" blue="0.64931738380000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" red="0.050676025450000002" green="0.4800305963" blue="0.9981866479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_comment" translatesAutoresizingMaskIntoConstraints="NO" id="BoN-Fn-ak7">
                                 <rect key="frame" x="44.5" y="14" width="15" height="15"/>
@@ -88,6 +91,9 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cV-bQ-8SK">
                                 <rect key="frame" x="0.0" y="0.0" width="163.5" height="42.5"/>
+                                <connections>
+                                    <action selector="comment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9xh-RN-oRq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -128,6 +134,14 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="commentImageView" destination="BoN-Fn-ak7" id="grx-xt-KBM"/>
+                <outlet property="commentLabel" destination="qdA-St-Xvd" id="qng-J4-u8q"/>
+                <outlet property="likeImageView" destination="Biv-qA-L8T" id="W4J-J0-ndm"/>
+                <outlet property="likeLabel" destination="QEG-oo-sA6" id="1pD-YD-xai"/>
+                <outlet property="statusImageView" destination="eE4-ve-ek5" id="ydf-eU-8co"/>
+                <outlet property="statusLabel" destination="XjV-jo-kgL" id="FC2-cS-WGy"/>
+            </connections>
             <point key="canvasLocation" x="28.5" y="189"/>
         </tableViewCell>
     </objects>

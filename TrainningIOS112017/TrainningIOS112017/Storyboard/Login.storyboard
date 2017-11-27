@@ -237,6 +237,14 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DCI-1p-reJ">
+                                <rect key="frame" x="110" y="227.5" width="100" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gf1-xa-xKQ">
                                 <rect key="frame" x="110" y="227.5" width="100" height="100"/>
                                 <constraints>
@@ -254,6 +262,9 @@
                                         <real key="value" value="50"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addPhoto:" destination="SpW-ZY-7Mj" eventType="touchUpInside" id="UBm-Fp-hVI"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MUI-QZ-BMV">
                                 <rect key="frame" x="45.5" y="337.5" width="229" height="260"/>
@@ -326,7 +337,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -358,6 +369,9 @@
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="register:" destination="SpW-ZY-7Mj" eventType="touchUpInside" id="dq6-Bw-CI6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -388,6 +402,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="DCI-1p-reJ" firstAttribute="bottom" secondItem="gf1-xa-xKQ" secondAttribute="bottom" id="0mY-3b-FVs"/>
+                            <constraint firstItem="DCI-1p-reJ" firstAttribute="top" secondItem="gf1-xa-xKQ" secondAttribute="top" id="6fw-RA-3Ee"/>
                             <constraint firstItem="0gs-vf-V2q" firstAttribute="top" secondItem="fmx-iQ-5Nq" secondAttribute="bottom" constant="20" id="8Gb-by-qoy"/>
                             <constraint firstItem="kFX-kZ-mLx" firstAttribute="leading" secondItem="zFH-b6-DYI" secondAttribute="leading" constant="15" id="Cob-8t-KCb"/>
                             <constraint firstItem="fmx-iQ-5Nq" firstAttribute="centerX" secondItem="zFH-b6-DYI" secondAttribute="centerX" id="M17-vf-0It"/>
@@ -395,6 +411,7 @@
                             <constraint firstItem="MUI-QZ-BMV" firstAttribute="top" secondItem="gf1-xa-xKQ" secondAttribute="bottom" constant="10" id="R69-0b-Jxx"/>
                             <constraint firstItem="kFX-kZ-mLx" firstAttribute="top" secondItem="zFH-b6-DYI" secondAttribute="top" constant="15" id="SNf-PT-NMB"/>
                             <constraint firstItem="0gs-vf-V2q" firstAttribute="centerX" secondItem="zFH-b6-DYI" secondAttribute="centerX" id="Ssh-VW-m7e"/>
+                            <constraint firstItem="DCI-1p-reJ" firstAttribute="trailing" secondItem="gf1-xa-xKQ" secondAttribute="trailing" id="TnG-Jr-y9f"/>
                             <constraint firstItem="zFH-b6-DYI" firstAttribute="bottom" secondItem="UhG-xF-m9O" secondAttribute="bottom" id="UKE-K9-jnT"/>
                             <constraint firstItem="zFH-b6-DYI" firstAttribute="trailing" secondItem="UhG-xF-m9O" secondAttribute="trailing" id="m8d-Pj-Sv8"/>
                             <constraint firstItem="z5c-3u-fea" firstAttribute="centerX" secondItem="gf1-xa-xKQ" secondAttribute="centerX" id="n3c-iR-utg"/>
@@ -403,6 +420,7 @@
                             <constraint firstItem="gf1-xa-xKQ" firstAttribute="top" secondItem="0gs-vf-V2q" secondAttribute="bottom" constant="20" id="pzy-Qg-LFQ"/>
                             <constraint firstItem="gf1-xa-xKQ" firstAttribute="centerX" secondItem="zFH-b6-DYI" secondAttribute="centerX" id="q8v-fZ-1FE"/>
                             <constraint firstItem="z5c-3u-fea" firstAttribute="centerY" secondItem="gf1-xa-xKQ" secondAttribute="centerY" id="qsj-mW-c2s"/>
+                            <constraint firstItem="DCI-1p-reJ" firstAttribute="leading" secondItem="gf1-xa-xKQ" secondAttribute="leading" id="sDi-28-UqB"/>
                             <constraint firstItem="MUI-QZ-BMV" firstAttribute="width" secondItem="UhG-xF-m9O" secondAttribute="width" multiplier="5/7" id="sRF-1z-AAU"/>
                             <constraint firstItem="fmx-iQ-5Nq" firstAttribute="top" secondItem="zFH-b6-DYI" secondAttribute="top" constant="80" id="yvx-Hq-IWK"/>
                         </constraints>
@@ -410,6 +428,8 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="addPhotoLabel" destination="z5c-3u-fea" id="nUb-ox-4j0"/>
+                        <outlet property="avatarImageView" destination="DCI-1p-reJ" id="ge8-vN-uwN"/>
                         <outlet property="emailTextField" destination="I8l-CE-LF7" id="6T2-CH-iWh"/>
                         <outlet property="nameTextField" destination="Juk-Yi-xxQ" id="KER-Xf-9cK"/>
                         <outlet property="passWordTextField" destination="aCC-Nn-4Hr" id="ghG-8i-Xad"/>

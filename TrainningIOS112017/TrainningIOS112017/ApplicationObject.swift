@@ -11,6 +11,7 @@ enum StoryboardID {
     case login
     case main
     case timeline
+    case myPage
 }
 
 class ApplicationObject {
@@ -23,6 +24,8 @@ class ApplicationObject {
             storyboard = UIStoryboard(name: "Main", bundle: nil)
         case .timeline:
             storyboard = UIStoryboard(name: "Timeline", bundle: nil)
+        case .myPage:
+            storyboard = UIStoryboard(name: "MyPage", bundle: nil)
         }
         return storyboard
     }

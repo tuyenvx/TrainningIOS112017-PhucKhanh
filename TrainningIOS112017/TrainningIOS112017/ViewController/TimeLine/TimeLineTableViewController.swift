@@ -8,9 +8,10 @@
 
 import UIKit
 
-class TimeLineTableViewController: UITableViewController, TimeLineTableViewCellDelegate {
+class TimeLineTableViewController: UITableViewController, TimeLineTableViewCellDelegate, UITextFieldDelegate {
     @IBOutlet weak private var avatarImageView: UIImageView!
-//    var timeLineDataSource = TimeLineTableViewDataSource()
+    @IBOutlet weak private var searchTextField: UITextField!
+    //    var timeLineDataSource = TimeLineTableViewDataSource()
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class TimeLineTableViewController: UITableViewController, TimeLineTableViewCellD
         tableView.estimatedRowHeight = 377
         // set up search bar
         tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
+        searchTextField.delegate = self
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
@@ -76,5 +78,10 @@ class TimeLineTableViewController: UITableViewController, TimeLineTableViewCellD
             timeLineCommentVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(timeLineCommentVC, animated: true)
         }
+    }
+    // MARK: - UITextField Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
     }
 }
