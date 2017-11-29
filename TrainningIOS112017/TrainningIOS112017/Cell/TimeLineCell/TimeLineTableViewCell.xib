@@ -48,7 +48,7 @@
                         </constraints>
                         <state key="normal" image="ic_expand_down"/>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="x5i-wU-2FI">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="x5i-wU-2FI">
                         <rect key="frame" x="0.0" y="117" width="315" height="220"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="220" id="2T0-RW-9Ya"/>
@@ -261,6 +261,7 @@
                 <outlet property="numberOfLikesLabel" destination="GyZ-cc-7UH" id="3Lb-Yi-I9A"/>
                 <outlet property="seperatorLineHeightConstraint" destination="P8z-gh-Oy3" id="0qA-Mr-Xk6"/>
                 <outlet property="statusImageView" destination="x5i-wU-2FI" id="rhe-d2-InY"/>
+                <outlet property="statusImageViewHeightConstraint" destination="2T0-RW-9Ya" id="kf3-nV-ia2"/>
                 <outlet property="statusLabel" destination="UFS-0h-CrS" id="G5u-e4-C9j"/>
                 <outlet property="timeLabel" destination="2yp-i7-aIK" id="Sx8-8L-nOq"/>
                 <outlet property="userNameLabel" destination="M7A-VH-fe1" id="Atn-WF-35w"/>

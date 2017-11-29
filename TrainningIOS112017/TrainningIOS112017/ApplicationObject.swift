@@ -7,6 +7,11 @@
 //
 import UIKit
 
+enum NotificationType {
+    case error
+    case info
+}
+
 enum StoryboardID {
     case login
     case main
@@ -15,6 +20,7 @@ enum StoryboardID {
 }
 
 class ApplicationObject {
+    let screenSize = UIScreen.main.bounds
      class func getStoryBoardByID(storyBoardID: StoryboardID) -> UIStoryboard {
         var storyboard = UIStoryboard()
         switch storyBoardID {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProfileTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class EditProfileTableViewController: BaseTableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak private var avatarImageView: UIImageView!
     @IBOutlet weak private var nameTextField: UITextField!
     @IBOutlet weak private var emailTextField: UITextField!
@@ -76,6 +76,7 @@ class EditProfileTableViewController: UITableViewController, UINavigationControl
         present(chosePhotoAlertViewController, animated: true, completion: nil)
     }
     @IBAction func saveChange(_ sender: UIButton) {
+        showNotification(type: .info, message: "Update profile success!")
     }
     // MARK: - Action
     func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
