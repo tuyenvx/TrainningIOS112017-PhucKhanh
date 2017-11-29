@@ -89,7 +89,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.57686305049999997" green="0.60093468429999997" blue="0.64931738380000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" red="0.050676025450000002" green="0.4800305963" blue="0.9981866479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_like" translatesAutoresizingMaskIntoConstraints="NO" id="S28-s4-dJj">
                                 <rect key="frame" x="27" y="14" width="15" height="15"/>
@@ -255,6 +255,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="avatarImageView" destination="ccz-vB-Cqm" id="Grm-Jd-ep6"/>
+                <outlet property="likeImageView" destination="S28-s4-dJj" id="3rF-Gq-632"/>
+                <outlet property="likeLabel" destination="S1v-Tf-ynQ" id="UI7-6k-FaU"/>
                 <outlet property="numberOfCommentsLabel" destination="SVM-y7-urC" id="qKb-sF-vT3"/>
                 <outlet property="numberOfLikesLabel" destination="GyZ-cc-7UH" id="3Lb-Yi-I9A"/>
                 <outlet property="seperatorLineHeightConstraint" destination="P8z-gh-Oy3" id="0qA-Mr-Xk6"/>
