@@ -386,7 +386,7 @@
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="21"/>
+                                                                <real key="value" value="0.0"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
@@ -940,7 +940,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1822" y="1057"/>
+            <point key="canvasLocation" x="1822" y="891"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="gSB-V7-lI4">
@@ -954,10 +954,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="70"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3j-3B-Gno">
-                                        <rect key="frame" x="15" y="22.5" width="25" height="25"/>
+                                        <rect key="frame" x="15" y="20" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="z3j-3B-Gno" secondAttribute="height" multiplier="1:1" id="cq4-rB-wAf"/>
-                                            <constraint firstAttribute="height" constant="25" id="xbH-C4-fEN"/>
+                                            <constraint firstAttribute="height" constant="30" id="xbH-C4-fEN"/>
                                         </constraints>
                                         <state key="normal" image="ic_back_black"/>
                                         <connections>
@@ -965,32 +965,32 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ava_stt" translatesAutoresizingMaskIntoConstraints="NO" id="cIK-6R-prN">
-                                        <rect key="frame" x="55" y="14" width="42" height="42"/>
+                                        <rect key="frame" x="60" y="14" width="42" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="cIK-6R-prN" secondAttribute="height" multiplier="1:1" id="OuB-oj-FoM"/>
                                             <constraint firstAttribute="height" constant="42" id="vIf-Dc-FCb"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="21"/>
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Irelia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyb-bI-spg">
-                                        <rect key="frame" x="112" y="16" width="248" height="21"/>
+                                        <rect key="frame" x="117" y="16" width="243" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_public" translatesAutoresizingMaskIntoConstraints="NO" id="Yfe-Cd-wFv">
-                                        <rect key="frame" x="178.5" y="40" width="14" height="14"/>
+                                        <rect key="frame" x="183.5" y="40" width="14" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Yfe-Cd-wFv" secondAttribute="height" multiplier="1:1" id="Z2b-ma-yMf"/>
                                             <constraint firstAttribute="height" constant="14" id="wf0-BV-ckH"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 hour ago." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pU-Rj-p90">
-                                        <rect key="frame" x="112" y="39" width="64.5" height="14.5"/>
+                                        <rect key="frame" x="117" y="39" width="64.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.53749948739999998" green="0.55356401209999995" blue="0.58582049609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1126,9 +1126,12 @@
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="avatarImageView" destination="cIK-6R-prN" id="oJf-sw-geW"/>
                         <outlet property="bottomConstraint" destination="wTA-zB-6hM" id="lZY-5x-d26"/>
                         <outlet property="commitTextField" destination="Ecl-ru-Yfa" id="jnZ-Wz-tBt"/>
                         <outlet property="tableView" destination="Zyi-9i-B7J" id="EhA-Ew-5i3"/>
+                        <outlet property="timeLabel" destination="4pU-Rj-p90" id="A13-td-kyA"/>
+                        <outlet property="userNameLabel" destination="Jyb-bI-spg" id="1h8-Gy-4zL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BlJ-7K-Xjd" userLabel="First Responder" sceneMemberID="firstResponder"/>

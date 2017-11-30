@@ -20,12 +20,6 @@ class BaseViewController: UIViewController {
         messageLabel.lineBreakMode = .byWordWrapping
         messageLabel.font = UIFont.systemFont(ofSize: 15)
         notifiView.addSubview(messageLabel)
-//        if navigationController != nil {
-//            self.navigationController?.view.addSubview(notifiView)
-//        } else {
-//            view.insertSubview(notifiView, at: 999)
-//        }
-//        notifiView.layer.zPosition = 999
         alertWindow.windowLevel = UIWindowLevelAlert
         alertWindow.addSubview(notifiView)
     }
@@ -39,9 +33,6 @@ class BaseViewController: UIViewController {
             self.alertWindow.isHidden = true
         }, completion: nil)
     }
-//    @objc func setNotifiViewHidden() {
-//        notifiView.isHidden = true
-//    }
 }
 extension BaseViewController {
     func showNotification(type: NotificationType, message: String) {

@@ -35,4 +35,16 @@ class ApplicationObject {
         }
         return storyboard
     }
+    class func getUserInfo() -> [String: Any]? {
+        guard let data = UserDefaults.standard.value(forKey: "userInfo") as? Data else {
+            return nil
+        }
+        let userInfo = NSKeyedUnarchiver.unarchiveObject(with: data)
+        return userInfo as? [String: Any]
+    }
+    class func setUserInfo(userInfo: [String: Any]) {
+        let data = NSKeyedArchiver.archivedData(withRootObject: userInfo)
+        UserDefaults.standard.set(data, forKey: "userInfo")
+        UserDefaults.standard.synchronize()
+    }
 }

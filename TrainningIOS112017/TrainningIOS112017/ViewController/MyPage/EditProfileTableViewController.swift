@@ -8,29 +8,25 @@
 
 import UIKit
 
-class EditProfileTableViewController: BaseTableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+class EditProfileTableViewController: BaseTableViewController {
     @IBOutlet weak private var avatarImageView: UIImageView!
     @IBOutlet weak private var nameTextField: UITextField!
     @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var addressTextField: UITextField!
     @IBOutlet weak private var phoneTextField: UITextField!
-    @IBOutlet weak private var birthDayDatePicker: UIDatePicker!
+    @IBOutlet weak private var birthDayTextField: UITextField!
+    var userInfo = [String: Any]()
+    private var birthDayDatePicker: UIDatePicker = UIDatePicker.init()
     let dateFormater: DateFormatter = {
        let formater = DateFormatter.init()
         formater.dateFormat = "dd/MM/yyyy"
         return formater
     }()
+    // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setDefaults()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -46,9 +42,44 @@ class EditProfileTableViewController: BaseTableViewController, UINavigationContr
         emailTextField.delegate = self
         addressTextField.delegate = self
         phoneTextField.delegate = self
+        birthDayTextField.inputView = createDatePickerView()
+        fillData(data: userInfo)
+    }
+    func fillData(data: [String: Any]) {
+        avatarImageView.image = data["avatar"] as? UIImage
+        nameTextField.text = data["name"] as? String
+        emailTextField.text = data["email"] as? String
+        phoneTextField.text = data["phone"] as? String
+        birthDayTextField.text = data["birthDay"] as? String
+        addressTextField.text = data["address"] as? String
+    }
+    func createDatePickerView() -> UIView {
+        let datePickerView = UIView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 230))
+        birthDayDatePicker.frame = CGRect(x: 0, y: 50, width: datePickerView.frame.width, height: 180)
+        let cancelButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        let doneButton = UIButton.init(frame: CGRect(x: view.frame.width - 100, y: 0, width: 100, height: 50))
+        let seperatorLine = UIView.init(frame: CGRect(x: 0, y: 50, width: datePickerView.frame.width, height: 1))
         birthDayDatePicker.maximumDate = Date()
         birthDayDatePicker.minimumDate = dateFormater.date(from: "01/01/1890")
-        birthDayDatePicker.setDate(dateFormater.date(from: "25/12/1994")!, animated: true)
+        if let str = userInfo["birthDay"] as? String {
+            let birthDay = dateFormater.date(from: str)
+            birthDayDatePicker.date = birthDay!
+        }
+        birthDayDatePicker.datePickerMode = .date
+        doneButton.setTitle("Done", for: .normal)
+        doneButton.setTitleColor(UIColor.black, for: .normal)
+        doneButton.addTarget(self, action: #selector(selectedDate), for: .touchUpInside)
+        //
+        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.setTitleColor(UIColor.black, for: .normal)
+        cancelButton.addTarget(self, action: #selector(hideDatePicker), for: .touchUpInside)
+        //
+        seperatorLine.backgroundColor = UIColor.lightGray
+        datePickerView.addSubview(doneButton)
+        datePickerView.addSubview(cancelButton)
+        datePickerView.addSubview(seperatorLine)
+        datePickerView.addSubview(birthDayDatePicker)
+        return datePickerView
     }
     // MARK: - IBAction
     @IBAction func changeAvatar(_ sender: UIButton) {
@@ -76,7 +107,37 @@ class EditProfileTableViewController: BaseTableViewController, UINavigationContr
         present(chosePhotoAlertViewController, animated: true, completion: nil)
     }
     @IBAction func saveChange(_ sender: UIButton) {
+        if emailTextField.text!.count <= 6 {
+            // show notifi
+            return
+        }
+        if addressTextField.text?.count == 0 {
+            return
+        }
+        if phoneTextField.text?.count == 0 {
+            return
+        }
+        if birthDayTextField.text?.count == 0 {
+            return
+        }
+        userInfo["avatar"] = avatarImageView.image
+        userInfo["name"] = nameTextField.text
+        userInfo["address"] = addressTextField.text
+        userInfo["phone"] = phoneTextField.text
+        userInfo["birthDay"] = birthDayTextField.text
+        userInfo["email"] = emailTextField.text
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: userInfo), forKey: "userInfo")
+        UserDefaults.standard.synchronize()
         showNotification(type: .info, message: "Update profile success!")
+        navigationController?.popViewController(animated: true)
+    }
+    @objc func selectedDate() {
+        let date = birthDayDatePicker.date
+        birthDayTextField.text = dateFormater.string(from: date)
+        view.endEditing(true)
+    }
+    @objc func hideDatePicker() {
+        self.view.endEditing(true)
     }
     // MARK: - Action
     func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
@@ -86,15 +147,19 @@ class EditProfileTableViewController: BaseTableViewController, UINavigationContr
         pickerView.delegate = self
         present(pickerView, animated: true, completion: nil)
     }
-    // MARK: - UIimagepickerController Delegate
+}
+// MARK: - UITextField Delegate
+extension EditProfileTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+}
+// MARK: - UIimagepickerController Delegate
+extension EditProfileTableViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         let image = info[UIImagePickerControllerEditedImage] as? UIImage
         avatarImageView.image = image
         dismiss(animated: true, completion: nil)
-    }
-    // MARK: - UITextField Delegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
-        return true
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: BaseViewController, UITextFieldDelegate {
+class LoginViewController: BaseViewController {
 
     @IBOutlet weak private var centerVerticalConstraint: NSLayoutConstraint!
     @IBOutlet weak private var emailTextField: UITextField!
@@ -25,9 +25,6 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removeKeyBoardNotifi()
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     // MARK: -
     override var prefersStatusBarHidden: Bool {
@@ -55,18 +52,20 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     func showMainTab() {
+        let userInfo = ApplicationObject.getUserInfo()
+        if userInfo == nil {
+            var info: [String: Any] = [String: Any]()
+            info["name"] = "Irelia"
+            info["avatar"] = #imageLiteral(resourceName: "ava_stt")
+            info["birthDay"] = "25/12/1994"
+            info["address"] = "Handico"
+            info["email"] = "irelia@framgia.com"
+            info["phone"] = "0978718305"
+            ApplicationObject.setUserInfo(userInfo: info)
+        }
         let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate!.window!.rootViewController = timeLineTabbar
-    }
-    // MARK: - UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            passWordTextField.becomeFirstResponder()
-        } else {
-            login(UIButton())
-        }
-        return true
     }
     // MARK: - Keyboard
     func addKeyBoardNotifi() {
@@ -95,5 +94,16 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         UIView.transition(with: view, duration: 2.5, options: .allowAnimatedContent, animations: {
             self.centerVerticalConstraint.constant = 0
         }, completion: nil)
+    }
+}
+// MARK: - UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passWordTextField.becomeFirstResponder()
+        } else {
+            login(UIButton())
+        }
+        return true
     }
 }

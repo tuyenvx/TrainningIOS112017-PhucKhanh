@@ -15,10 +15,11 @@ class StatusInfoTableViewCell: UITableViewCell {
     @IBOutlet weak private var likeImageView: UIImageView!
     @IBOutlet weak private var commentLabel: UILabel!
     @IBOutlet weak private var commentImageView: UIImageView!
+    @IBOutlet weak private var imageViewHeightConstraint: NSLayoutConstraint!
+    var item = PostItem()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        setLikeButtonHighLighted(isHighlight: true)
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -26,16 +27,23 @@ class StatusInfoTableViewCell: UITableViewCell {
     }
     // MARK: - IBAction
     @IBAction func like(_ sender: UIButton) {
-        setLikeButtonHighLighted(isHighlight: !likeLabel.isHighlighted)
+        item.isLiked = !item.isLiked
+        setLikeButtonHighLighted()
     }
     @IBAction func comment(_ sender: UIButton) {
     }
-    func fillData(data: [String: Any]) {
-        statusLabel.text = data[""] as? String
-        statusImageView.image = data[""] as? UIImage
+    func fillData() {
+        statusLabel.text = item.status
+        if item.image == nil {
+            imageViewHeightConstraint.constant = 0
+        } else {
+            imageViewHeightConstraint.constant = 220
+            statusImageView?.image = item.image
+        }
+        setLikeButtonHighLighted()
     }
-    func setLikeButtonHighLighted(isHighlight: Bool) {
-        likeLabel.isHighlighted = isHighlight
-        isHighlight == true ? (likeImageView.image = #imageLiteral(resourceName: "ic_like_highlight")) : (likeImageView.image = #imageLiteral(resourceName: "ic_like"))
+    func setLikeButtonHighLighted() {
+        likeLabel.isHighlighted = item.isLiked
+        item.isLiked == true ? (likeImageView.image = #imageLiteral(resourceName: "ic_like_highlight")) : (likeImageView.image = #imageLiteral(resourceName: "ic_like"))
     }
 }
