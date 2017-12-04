@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet weak private var centerVerticalConstraint: NSLayoutConstraint!
     @IBOutlet weak private var emailTextField: UITextField!
@@ -49,20 +49,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func login(_ sender: Any) {
         self.view.endEditing(true)
         if emailTextField.text!.count > 6 && passWordTextField.text!.count > 6 {
-            // login
-//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//                print("Khong the login")
-//                return
-//            }
-//            appDelegate.showMainTab()
             showMainTab()
         } else {
-            let loginFalseAlert = UIAlertController.init(title: "Error", message: "Email and password must have >6 character", preferredStyle: .alert)
-            let tryAgainButton = UIAlertAction.init(title: "Try Again", style: .cancel, handler: { _ in
-                self.view.endEditing(true)
-            })
-            loginFalseAlert.addAction(tryAgainButton)
-            present(loginFalseAlert, animated: true, completion: nil)
+            showNotification(type: .error, message: "Email and password must have >6 character")
         }
     }
     func showMainTab() {

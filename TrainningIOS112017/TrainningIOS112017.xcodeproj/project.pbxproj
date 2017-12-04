@@ -19,6 +19,11 @@
 		CC0C16301FC28062001C0FB8 /* ApplicationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C162F1FC28062001C0FB8 /* ApplicationObject.swift */; };
 		CC0C16321FC29460001C0FB8 /* UIView+Desiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C16311FC29460001C0FB8 /* UIView+Desiable.swift */; };
 		CC0C16341FC2AFF3001C0FB8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C16331FC2AFF3001C0FB8 /* SignUpViewController.swift */; };
+		CC302CB41FCE388F00EE4C4F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CB31FCE388F00EE4C4F /* BaseViewController.swift */; };
+		CC302CB61FCE480600EE4C4F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CB51FCE480600EE4C4F /* BaseTableViewController.swift */; };
+		CC302CB91FCE4ACA00EE4C4F /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CB81FCE4ACA00EE4C4F /* PostItem.swift */; };
+		CC302CBB1FCE547500EE4C4F /* PostStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CBA1FCE547500EE4C4F /* PostStore.swift */; };
+		CC302CBD1FCE8A3600EE4C4F /* ActionPostStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CBC1FCE8A3600EE4C4F /* ActionPostStatusTableViewController.swift */; };
 		CC31CA961FC51A0600C0213A /* TimeLinePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31CA951FC51A0600C0213A /* TimeLinePostViewController.swift */; };
 		CC31CAA01FC56ED300C0213A /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31CA9E1FC56ED300C0213A /* CommentTableViewCell.swift */; };
 		CC31CAA11FC56ED300C0213A /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC31CA9F1FC56ED300C0213A /* CommentTableViewCell.xib */; };
@@ -70,6 +75,11 @@
 		CC0C162F1FC28062001C0FB8 /* ApplicationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationObject.swift; sourceTree = "<group>"; };
 		CC0C16311FC29460001C0FB8 /* UIView+Desiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Desiable.swift"; sourceTree = "<group>"; };
 		CC0C16331FC2AFF3001C0FB8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CC302CB31FCE388F00EE4C4F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CC302CB51FCE480600EE4C4F /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		CC302CB81FCE4ACA00EE4C4F /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
+		CC302CBA1FCE547500EE4C4F /* PostStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStore.swift; sourceTree = "<group>"; };
+		CC302CBC1FCE8A3600EE4C4F /* ActionPostStatusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPostStatusTableViewController.swift; sourceTree = "<group>"; };
 		CC31CA951FC51A0600C0213A /* TimeLinePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLinePostViewController.swift; sourceTree = "<group>"; };
 		CC31CA9E1FC56ED300C0213A /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		CC31CA9F1FC56ED300C0213A /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
@@ -155,8 +165,19 @@
 				CC06A0FF1FC6C21F00548D25 /* Launch */,
 				CC7751BE1FC588EC00D0C585 /* Login and SignUp */,
 				CC31CA971FC51A0E00C0213A /* TimeLine */,
+				CC302CB31FCE388F00EE4C4F /* BaseViewController.swift */,
+				CC302CB51FCE480600EE4C4F /* BaseTableViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CC302CB71FCE4A0E00EE4C4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC302CB81FCE4ACA00EE4C4F /* PostItem.swift */,
+				CC302CBA1FCE547500EE4C4F /* PostStore.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CC31CA971FC51A0E00C0213A /* TimeLine */ = {
@@ -166,6 +187,7 @@
 				CC31CA951FC51A0600C0213A /* TimeLinePostViewController.swift */,
 				CC06A0F01FC6576A00548D25 /* CommentViewController.swift */,
 				CC7EDBC31FCC0E1600008EFD /* MainTabBarController.swift */,
+				CC302CBC1FCE8A3600EE4C4F /* ActionPostStatusTableViewController.swift */,
 			);
 			path = TimeLine;
 			sourceTree = "<group>";
@@ -254,6 +276,7 @@
 		CCD36E961FBEECF70027DC49 /* TrainningIOS112017 */ = {
 			isa = PBXGroup;
 			children = (
+				CC302CB71FCE4A0E00EE4C4F /* Model */,
 				CC31CA9C1FC56EA800C0213A /* Cell */,
 				CC0C162A1FC27CEB001C0FB8 /* ViewController */,
 				CC3A122C1FC25BFE008EEBE8 /* Storyboard */,
@@ -609,18 +632,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC302CB61FCE480600EE4C4F /* BaseTableViewController.swift in Sources */,
 				CC06A0FE1FC6C21B00548D25 /* LaunchViewController.swift in Sources */,
 				CC31CAA01FC56ED300C0213A /* CommentTableViewCell.swift in Sources */,
 				CC0C16341FC2AFF3001C0FB8 /* SignUpViewController.swift in Sources */,
 				CC0C162C1FC27D05001C0FB8 /* LoginViewController.swift in Sources */,
+				CC302CB91FCE4ACA00EE4C4F /* PostItem.swift in Sources */,
 				CC6B68E91FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift in Sources */,
 				CC6B68F61FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift in Sources */,
 				CC3D50281FCD134F00065D8D /* ProfileTableViewController.swift in Sources */,
+				CC302CB41FCE388F00EE4C4F /* BaseViewController.swift in Sources */,
 				CC0C16301FC28062001C0FB8 /* ApplicationObject.swift in Sources */,
 				CC0C16321FC29460001C0FB8 /* UIView+Desiable.swift in Sources */,
 				CC7EDBC41FCC0E1600008EFD /* MainTabBarController.swift in Sources */,
+				CC302CBB1FCE547500EE4C4F /* PostStore.swift in Sources */,
 				CC6B68F31FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift in Sources */,
 				CCD36E981FBEECF70027DC49 /* AppDelegate.swift in Sources */,
+				CC302CBD1FCE8A3600EE4C4F /* ActionPostStatusTableViewController.swift in Sources */,
 				CC31CA961FC51A0600C0213A /* TimeLinePostViewController.swift in Sources */,
 				CC3D502A1FCD152500065D8D /* EditProfileTableViewController.swift in Sources */,
 				CC06A0F11FC6576A00548D25 /* CommentViewController.swift in Sources */,
@@ -795,6 +823,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TrainningIOS112017/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = framgia.TrainningIOS112017;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -810,6 +839,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TrainningIOS112017/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = framgia.TrainningIOS112017;
 				PRODUCT_NAME = "$(TARGET_NAME)";

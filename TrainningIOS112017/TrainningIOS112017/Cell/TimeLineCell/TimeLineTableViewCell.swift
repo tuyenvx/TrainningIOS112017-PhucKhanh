@@ -22,6 +22,7 @@ class TimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak private var seperatorLineHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak private var likeLabel: UILabel!
     @IBOutlet weak private var likeImageView: UIImageView!
+    @IBOutlet weak private var statusImageViewHeightConstraint: NSLayoutConstraint!
     weak var delegate: TimeLineTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,13 +35,19 @@ class TimeLineTableViewCell: UITableViewCell {
     }
     //
     func fillData(data: [String: Any]) {
-        avatarImageView.image = data[""] as? UIImage
-        userNameLabel.text = data[""] as? String
-        timeLabel.text = data[""] as? String
-        statusLabel.text = data[""] as? String
-        statusImageView.image = data[""] as? UIImage
-        numberOfLikesLabel.text = "\(String(describing: data[""])) Likes"
-        numberOfCommentsLabel.text = "\(data[""] ?? "") Comments"
+//        avatarImageView.image = data["image"] as? UIImage
+        avatarImageView.image = data["avatar"] as? UIImage ?? UIImage.init()
+        userNameLabel.text = data["name"] as? String
+        timeLabel.text = data["time"] as? String
+        statusLabel.text = data["status"] as? String
+        if data["image"] != nil {
+            statusImageViewHeightConstraint.constant = 220
+            statusImageView.image = data["image"] as? UIImage
+        } else {
+            statusImageViewHeightConstraint.constant = 0
+        }
+        numberOfLikesLabel.text = "\(data["numberOfLike"] ?? 0) Likes"
+        numberOfCommentsLabel.text = "\(data["numberOfComment"] ?? 0) Comments"
     }
     func setStatus(status: String) {
         statusLabel.text = status
