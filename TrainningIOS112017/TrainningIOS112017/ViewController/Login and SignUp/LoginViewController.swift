@@ -13,6 +13,9 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak private var centerVerticalConstraint: NSLayoutConstraint!
     @IBOutlet weak private var emailTextField: UITextField!
     @IBOutlet weak private var passWordTextField: UITextField!
+    var appApi = AppAPI.init()
+    @IBOutlet weak private var loginButton: UIButton!
+    @IBOutlet weak private var registerButton: UIButton!
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,34 +41,66 @@ class LoginViewController: BaseViewController {
     }
     // MARK: - UIAction
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let signupVC = segue.destination as? SignUpViewController
+        signupVC?.delegate = self
         self.view.endEditing(true)
     }
     @IBAction func hideKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
     @IBAction func login(_ sender: Any) {
+        setAllButtonEnable(isEnable: false)
         self.view.endEditing(true)
         if emailTextField.text!.count > 6 && passWordTextField.text!.count > 6 {
-            showMainTab()
+            var param: Dictionary = [String: String]()
+            param[AppKey.username] = emailTextField.text
+            param[AppKey.password] = passWordTextField.text
+            IndicatorManager.showIndicatorView()
+            appApi.requestURLEncoded(httpMethod: .post, param: param, apiType: .login, completionHandle: { (data, error) in
+                IndicatorManager.hideIndicatorView()
+                self.setAllButtonEnable(isEnable: true)
+                if let responseData: [String: Any] = data {
+                    if responseData[AppKey.success] as? Int == 1 {
+                        UserDefaults.standard.set(responseData[AppKey.token], forKey: AppKey.token)
+                        self.showMainTab()
+                    } else {
+                        guard let errorMessage = responseData[AppKey.message] as? String else {
+                            return
+                        }
+                        self.showNotification(type: .error, message: errorMessage)
+                    }
+                } else {
+                    print(error as Any)
+                    self.showNotification(type: .error, message: "Can't login, please try again!")
+                }
+            })
         } else {
             showNotification(type: .error, message: "Email and password must have >6 character")
         }
     }
     func showMainTab() {
-        let userInfo = ApplicationObject.getUserInfo()
-        if userInfo == nil {
-            var info: [String: Any] = [String: Any]()
-            info["name"] = "Irelia"
-            info["avatar"] = #imageLiteral(resourceName: "ava_stt")
-            info["birthDay"] = "25/12/1994"
-            info["address"] = "Handico"
-            info["email"] = "irelia@framgia.com"
-            info["phone"] = "0978718305"
-            ApplicationObject.setUserInfo(userInfo: info)
+        DispatchQueue.main.async {
+            let userInfo = ApplicationObject.getUserInfo()
+            if userInfo == nil {
+                var info: [String: Any] = [String: Any]()
+                info[AppKey.username] = self.emailTextField.text
+                info[AppKey.avatar] = #imageLiteral(resourceName: "ava_stt")
+                info[AppKey.birthDay] = "25/12/1994"
+                info[AppKey.address] = "Handico"
+                info[AppKey.email] = "irelia@framgia.com"
+                info[AppKey.phone] = "0978718305"
+                ApplicationObject.setUserInfo(userInfo: info)
+            }
+            let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate!.window!.rootViewController = timeLineTabbar
         }
-        let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate!.window!.rootViewController = timeLineTabbar
+    }
+    func setAllButtonEnable(isEnable: Bool) {
+        DispatchQueue.main.async {
+            self.loginButton.isEnabled = isEnable
+            self.registerButton.isEnabled = isEnable
+        }
     }
     // MARK: - Keyboard
     func addKeyBoardNotifi() {
@@ -105,5 +140,11 @@ extension LoginViewController: UITextFieldDelegate {
             login(UIButton())
         }
         return true
+    }
+}
+// MARK: - Signup ViewController Delegate
+extension LoginViewController: SignUpViewControllerDelegate {
+    func signupSuccess() {
+        showNotification(type: .info, message: "RegisterSuccess, please login!")
     }
 }

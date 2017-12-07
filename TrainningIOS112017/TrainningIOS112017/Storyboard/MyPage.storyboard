@@ -240,6 +240,39 @@ QWRkcmVzcxAQIDo
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="xKb-wk-cwr">
+                                        <rect key="frame" x="0.0" y="480" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xKb-wk-cwr" id="5uY-Dp-kYe">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfE-Oy-tg8">
+                                                    <rect key="frame" x="62" y="5" width="250" height="40"/>
+                                                    <color key="backgroundColor" red="0.15150535109999999" green="0.68080806729999999" blue="0.37881216410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="eSl-0b-Cee"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Logout">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="logout:" destination="Wgy-lM-zRa" eventType="touchUpInside" id="HJo-Qw-ko2"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BfE-Oy-tg8" firstAttribute="centerY" secondItem="5uY-Dp-kYe" secondAttribute="centerY" id="TAX-Kn-buu"/>
+                                                <constraint firstItem="BfE-Oy-tg8" firstAttribute="centerX" secondItem="5uY-Dp-kYe" secondAttribute="centerX" id="UW7-9R-vcn"/>
+                                                <constraint firstItem="BfE-Oy-tg8" firstAttribute="width" secondItem="5uY-Dp-kYe" secondAttribute="width" multiplier="2/3" id="t3w-19-Gzc"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -260,7 +293,9 @@ QWRkcmVzcxAQIDo
                         <outlet property="addressLabel" destination="Uvr-V1-6US" id="c0r-Ua-As7"/>
                         <outlet property="avatarImageView" destination="rae-ZW-oEZ" id="ZsW-qH-61q"/>
                         <outlet property="birthDayLabel" destination="qWr-Nb-Kbp" id="gBZ-XH-V49"/>
+                        <outlet property="editProfileBarButtonItem" destination="o3h-vC-JXB" id="MbL-eg-s1c"/>
                         <outlet property="emailLabel" destination="wXU-GG-BwB" id="GmR-h4-Jht"/>
+                        <outlet property="logoutButton" destination="BfE-Oy-tg8" id="WKz-vL-pLZ"/>
                         <outlet property="nameLabel" destination="ddC-EZ-alc" id="yHV-Za-Efr"/>
                         <outlet property="phoneLabel" destination="qIM-Af-gV7" id="sfy-ZN-Xcl"/>
                     </connections>

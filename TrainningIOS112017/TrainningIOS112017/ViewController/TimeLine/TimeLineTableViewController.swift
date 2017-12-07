@@ -24,7 +24,7 @@ class TimeLineTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         if let userInfo = ApplicationObject.getUserInfo() {
-            avatarImageView.image = userInfo["avatar"] as? UIImage
+            avatarImageView.image = userInfo[AppKey.avatar] as? UIImage
         }
         self.tableView.reloadData()
     }
