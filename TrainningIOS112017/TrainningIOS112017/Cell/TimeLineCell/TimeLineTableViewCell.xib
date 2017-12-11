@@ -270,7 +270,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Image" width="375" height="375"/>
+        <image name="Image" width="400" height="400"/>
         <image name="ava_post" width="40" height="40"/>
         <image name="ic_comment" width="16" height="16"/>
         <image name="ic_expand_down" width="16" height="16"/>

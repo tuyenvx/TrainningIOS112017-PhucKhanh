@@ -8,11 +8,14 @@
 
 import UIKit
 
-class CommentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class CommentViewController: UIViewController {
     @IBOutlet weak private var commitTextField: UITextField!
     @IBOutlet weak private var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var avatarImageView: UIImageView!
+    @IBOutlet weak private var userNameLabel: UILabel!
     @IBOutlet weak private var tableView: UITableView!
-    var index = 0
+    @IBOutlet weak private var timeLabel: UILabel!
+    var item: PostItem = PostItem()
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,17 +24,14 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         addKeyBoardNotifi()
+        fillData()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         removeKeyBoardNotifi()
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     // MARK: - init
     func setDefauts() {
@@ -42,28 +42,10 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.estimatedRowHeight = 40
         commitTextField.delegate = self
     }
-    // MARK: - UITableViewDelegate + datasource
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return 15
-        }
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let statusInfoCell = tableView.dequeueReusableCell(withIdentifier: "StatusInfoTableViewCell")
-            return statusInfoCell!
-        } else {
-            let commentCell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell")
-            return commentCell!
-        }
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+    func fillData() {
+        avatarImageView.image = item.avatar
+        userNameLabel.text = item.name
+        timeLabel.text = item.time
     }
     // MARK: - UIAction
     @IBAction func back(_ sender: UIButton) {
@@ -94,7 +76,40 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.bottomConstraint.constant = 0
         }, completion: nil)
     }
-    // MARK: - UItextField delegate
+}
+// MARK: - UITableViewDelegate
+extension CommentViewController: UITableViewDelegate {
+    //
+}
+// MARK: - UITableViewDataSource
+extension CommentViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else {
+            return 15
+        }
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let statusInfoCell = tableView.dequeueReusableCell(withIdentifier: "StatusInfoTableViewCell") as? StatusInfoTableViewCell
+            statusInfoCell?.item = item
+            statusInfoCell?.fillData()
+            return statusInfoCell!
+        } else {
+            let commentCell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell")
+            return commentCell!
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+}
+// MARK: - UItextField delegate
+extension CommentViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true

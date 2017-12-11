@@ -13,10 +13,11 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // add tab my page
-        let profileNavigationController = ApplicationObject.getStoryBoardByID(storyBoardID: .myPage).instantiateInitialViewController() as? UINavigationController
-        let item = UITabBarItem.init(title: " ", image: #imageLiteral(resourceName: "tab_mypage"), selectedImage: #imageLiteral(resourceName: "tab_mypage"))
-        profileNavigationController?.tabBarItem = item
-        self.viewControllers?.append(profileNavigationController!)
+        if let profileNavigationController = ApplicationObject.getStoryBoardByID(storyBoardID: .myPage).instantiateInitialViewController() as? UINavigationController {
+            let item = UITabBarItem.init(title: " ", image: #imageLiteral(resourceName: "tab_mypage"), selectedImage: #imageLiteral(resourceName: "tab_mypage"))
+            profileNavigationController.tabBarItem = item
+            self.viewControllers?.append(profileNavigationController)
+        }
         // make tabbar item in center
         if let items = tabBar.items {
             for barItem: UITabBarItem in items {
@@ -32,9 +33,5 @@ class MainTabBarController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         //
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimeLineTableViewController: UITableViewController, TimeLineTableViewCellDelegate, UITextFieldDelegate {
+class TimeLineTableViewController: UITableViewController {
     var postStore: PostStore!
     @IBOutlet weak private var avatarImageView: UIImageView!
     @IBOutlet weak private var searchTextField: UITextField!
@@ -19,12 +19,14 @@ class TimeLineTableViewController: UITableViewController, TimeLineTableViewCellD
     override func viewDidLoad() {
         super.viewDidLoad()
         setDefaults()
-//        timeLineDataSource = TimeLineTableViewDataSource(tableView: tableView)
-//        tableView.dataSource = timeLineDataSource
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        if let userInfo = ApplicationObject.getUserInfo() {
+            avatarImageView.image = userInfo["avatar"] as? UIImage
+        }
+        self.tableView.reloadData()
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -38,7 +40,6 @@ class TimeLineTableViewController: UITableViewController, TimeLineTableViewCellD
         // set up search bar
         tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
         searchTextField.delegate = self
-//        notificationCentrer.addObserver(forName: .postStatus, object: nil, queue: nil, using: postStatus)
         let mainQueue = OperationQueue.main
         postStatusObserver = notificationCentrer.addObserver(forName: .postStatus, object: nil, queue: mainQueue) { (notification: Notification) in
             guard let userInfo = notification.userInfo, let postItem = userInfo["postItem"] as? PostItem else {
@@ -64,28 +65,36 @@ class TimeLineTableViewController: UITableViewController, TimeLineTableViewCellD
     }
     @IBAction func checkIn(_ sender: UIButton) {
     }
-    // MARK: - UITableView Delegate  + Datasource
+}
+// MARK: - UITableView DataSource
+extension TimeLineTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postStore.allPosts.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let timeLineTableViewCell = tableView.dequeueReusableCell(withIdentifier: "TimeLineTableViewCell", for: indexPath) as? TimeLineTableViewCell
-        timeLineTableViewCell?.fillData(data: postStore.allPosts[indexPath.row].convertToDictionary())
+        timeLineTableViewCell?.item = postStore.allPosts[indexPath.row]
+        timeLineTableViewCell?.fillData()
         timeLineTableViewCell?.delegate = self
         return timeLineTableViewCell!
     }
     func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    // MARK: - TimelineTableViewCell Delegate
+}
+// MARK: - TimelineTableViewCell Delegate
+extension TimeLineTableViewController: TimeLineTableViewCellDelegate {
     func comment(index: Int) {
+        print(postStore.allPosts[0])
         if let timeLineCommentVC = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateViewController(withIdentifier: "CommentViewController") as? CommentViewController {
-            timeLineCommentVC.index = index
+            timeLineCommentVC.item = postStore.allPosts[index]
             timeLineCommentVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(timeLineCommentVC, animated: true)
         }
     }
-    // MARK: - UITextField Delegate
+}
+// MARK: - UITextField Delegate
+extension TimeLineTableViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return true

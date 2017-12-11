@@ -32,13 +32,13 @@ class TimeLinePostViewController: BaseViewController {
         super.viewWillDisappear(animated)
         removeKeyBoardNotifi()
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     // MARK: - init
     func setDefaults() {
         statusTextView.delegate = self
+        if let userInfo = ApplicationObject.getUserInfo() {
+            avatarImageView.image = userInfo["avatar"] as? UIImage
+            userNamaLabel.text = userInfo["name"] as? String
+        }
     }
     // MARK: - UIAction
     @IBAction func cancel(_ sender: UIButton) {
@@ -51,7 +51,7 @@ class TimeLinePostViewController: BaseViewController {
             showNotification(type: .error, message: "Enter your status please !")
             return
         }
-        let postItem = PostItem.init(avatar: #imageLiteral(resourceName: "ava_stt"), name: "Irelia", time: "a minutes", status: statusTextView.text, image: statusImageView.image, numberOfLike: 0, numberOfComment: 0)
+        let postItem = PostItem.init(avatar: avatarImageView.image!, name: userNamaLabel.text!, time: "a minutes", status: statusTextView.text, image: statusImageView.image, numberOfLike: 0, numberOfComment: 0)
         NotificationCenter.default.post(name: .postStatus, object: nil, userInfo: ["postItem": postItem])
         dismiss(animated: true, completion: nil)
     }

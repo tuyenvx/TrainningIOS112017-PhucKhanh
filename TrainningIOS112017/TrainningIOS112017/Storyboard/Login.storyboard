@@ -409,10 +409,11 @@
                             <constraint firstItem="fmx-iQ-5Nq" firstAttribute="centerX" secondItem="zFH-b6-DYI" secondAttribute="centerX" id="M17-vf-0It"/>
                             <constraint firstItem="UhG-xF-m9O" firstAttribute="leading" secondItem="eg8-up-9cj" secondAttribute="leading" id="Q8F-CZ-afh"/>
                             <constraint firstItem="MUI-QZ-BMV" firstAttribute="top" secondItem="gf1-xa-xKQ" secondAttribute="bottom" constant="10" id="R69-0b-Jxx"/>
-                            <constraint firstItem="kFX-kZ-mLx" firstAttribute="top" secondItem="zFH-b6-DYI" secondAttribute="top" constant="15" id="SNf-PT-NMB"/>
+                            <constraint firstItem="0gs-vf-V2q" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kFX-kZ-mLx" secondAttribute="bottom" constant="20" id="SgX-yC-NOC"/>
                             <constraint firstItem="0gs-vf-V2q" firstAttribute="centerX" secondItem="zFH-b6-DYI" secondAttribute="centerX" id="Ssh-VW-m7e"/>
                             <constraint firstItem="DCI-1p-reJ" firstAttribute="trailing" secondItem="gf1-xa-xKQ" secondAttribute="trailing" id="TnG-Jr-y9f"/>
                             <constraint firstItem="zFH-b6-DYI" firstAttribute="bottom" secondItem="UhG-xF-m9O" secondAttribute="bottom" id="UKE-K9-jnT"/>
+                            <constraint firstItem="kFX-kZ-mLx" firstAttribute="top" secondItem="zFH-b6-DYI" secondAttribute="top" priority="900" constant="15" id="imx-xg-RwE"/>
                             <constraint firstItem="zFH-b6-DYI" firstAttribute="trailing" secondItem="UhG-xF-m9O" secondAttribute="trailing" id="m8d-Pj-Sv8"/>
                             <constraint firstItem="z5c-3u-fea" firstAttribute="centerX" secondItem="gf1-xa-xKQ" secondAttribute="centerX" id="n3c-iR-utg"/>
                             <constraint firstItem="UhG-xF-m9O" firstAttribute="top" secondItem="zFH-b6-DYI" secondAttribute="top" id="nPO-wL-Sn7"/>
@@ -468,6 +469,6 @@
     </scenes>
     <resources>
         <image name="Background" width="213" height="378"/>
-        <image name="ic_back" width="42" height="42"/>
+        <image name="ic_back" width="40" height="40"/>
     </resources>
 </document>

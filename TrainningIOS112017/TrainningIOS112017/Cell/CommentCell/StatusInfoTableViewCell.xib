@@ -137,6 +137,7 @@
             <connections>
                 <outlet property="commentImageView" destination="BoN-Fn-ak7" id="grx-xt-KBM"/>
                 <outlet property="commentLabel" destination="qdA-St-Xvd" id="qng-J4-u8q"/>
+                <outlet property="imageViewHeightConstraint" destination="ooP-jh-Ujy" id="imS-XL-RTm"/>
                 <outlet property="likeImageView" destination="Biv-qA-L8T" id="W4J-J0-ndm"/>
                 <outlet property="likeLabel" destination="QEG-oo-sA6" id="1pD-YD-xai"/>
                 <outlet property="statusImageView" destination="eE4-ve-ek5" id="ydf-eU-8co"/>
@@ -146,7 +147,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Image" width="375" height="375"/>
+        <image name="Image" width="400" height="400"/>
         <image name="ic_comment" width="16" height="16"/>
         <image name="ic_like" width="16" height="16"/>
     </resources>

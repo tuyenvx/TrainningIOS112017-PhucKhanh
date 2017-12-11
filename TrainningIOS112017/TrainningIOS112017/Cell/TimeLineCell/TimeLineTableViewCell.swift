@@ -23,10 +23,10 @@ class TimeLineTableViewCell: UITableViewCell {
     @IBOutlet weak private var likeLabel: UILabel!
     @IBOutlet weak private var likeImageView: UIImageView!
     @IBOutlet weak private var statusImageViewHeightConstraint: NSLayoutConstraint!
+    var item = PostItem()
     weak var delegate: TimeLineTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -34,27 +34,33 @@ class TimeLineTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     //
-    func fillData(data: [String: Any]) {
-//        avatarImageView.image = data["image"] as? UIImage
-        avatarImageView.image = data["avatar"] as? UIImage ?? UIImage.init()
-        userNameLabel.text = data["name"] as? String
-        timeLabel.text = data["time"] as? String
-        statusLabel.text = data["status"] as? String
-        if data["image"] != nil {
+    func fillData() {
+        avatarImageView.image = item.avatar
+        userNameLabel.text = item.name
+        timeLabel.text = item.time
+        statusLabel.text = item.status
+        if item.image != nil {
             statusImageViewHeightConstraint.constant = 220
-            statusImageView.image = data["image"] as? UIImage
+            statusImageView.image = item.image
         } else {
             statusImageViewHeightConstraint.constant = 0
         }
-        numberOfLikesLabel.text = "\(data["numberOfLike"] ?? 0) Likes"
-        numberOfCommentsLabel.text = "\(data["numberOfComment"] ?? 0) Comments"
+        numberOfLikesLabel.text = "\(item.numberOfLike ?? 0) Likes"
+        numberOfCommentsLabel.text = "\(item.numberOfComment ?? 0) Comments"
+        setLikeButtonHighLighted()
     }
     func setStatus(status: String) {
         statusLabel.text = status
     }
     // MARK: - UIAction
     @IBAction func like(_ sender: UIButton) {
-        setLikeButtonHighLighted(isHighlight: !likeLabel.isHighlighted)
+        item.isLiked = !item.isLiked
+        if item.isLiked == true {
+            item.numberOfLike = item.numberOfLike! + 1
+        } else {
+            item.numberOfLike = item.numberOfLike! - 1
+        }
+        setLikeButtonHighLighted()
     }
     @IBAction func comment(_ sender: UIButton) {
         guard let tableView = self.superview as? UITableView else {
@@ -69,16 +75,9 @@ class TimeLineTableViewCell: UITableViewCell {
     func hideSeperatorLine() {
         seperatorLineHeightConstraint.constant = 0
     }
-    func setLikeButtonHighLighted(isHighlight: Bool) {
-        likeLabel.isHighlighted = isHighlight
-        isHighlight == true ? (likeImageView.image = #imageLiteral(resourceName: "ic_like_highlight")) : (likeImageView.image = #imageLiteral(resourceName: "ic_like"))
-        var numberOfLikeString = numberOfLikesLabel.text
-        numberOfLikeString = numberOfLikeString?.replacingOccurrences(of: " Likes", with: "")
-        var numberOfLike: Int = Int(numberOfLikeString!) ?? 0
-        isHighlight == true ? (numberOfLike+=1) : (numberOfLike-=1)
-        numberOfLikesLabel.text = "\(numberOfLike) Likes"
+    func setLikeButtonHighLighted() {
+        likeLabel.isHighlighted = item.isLiked
+        item.isLiked == true ? (likeImageView.image = #imageLiteral(resourceName: "ic_like_highlight")) : (likeImageView.image = #imageLiteral(resourceName: "ic_like"))
+        numberOfLikesLabel.text = "\(item.numberOfLike ?? 0) Likes"
     }
-//    override func prepareForReuse() {
-//        setLikeButtonHighLighted(isHighlight: false)
-//    }
 }
