@@ -17,13 +17,31 @@ class LaunchViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if UserDefaults.standard.value(forKey: AppKey.token) == nil {
-            let loginVC = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateViewController(withIdentifier: "LoginViewController")
-            self.present(loginVC, animated: true, completion: nil)
+        if let token = UserDefaults.standard.value(forKey: AppKey.token) as? [String: Any] {
+            var tokenAPI = AppAPI()
+            let param = [
+                AppKey.refreshToken: token[AppKey.refreshToken] as Any ,
+                AppKey.clientId: "client_id",
+                AppKey.clientSecret: "client_secret",
+                AppKey.grantType: "refresh_token"
+            ]
+            tokenAPI.request(httpMethod: .post, param: param, apiType: .token, completionHandle: { (data, error) in
+                if let responseData = data {
+                    if responseData[AppKey.success] as? Int == 1 {
+                        print("REFRESH TOKEN")
+                        UserDefaults.standard.set(responseData[AppKey.token], forKey: AppKey.token)
+                        UserDefaults.standard.synchronize()
+                        self.gotoMainScreen()
+                    } else {
+                        self.gotoLogin()
+                    }
+                } else {
+                    print(error as Any)
+                    self.gotoLogin()
+                }
+            })
         } else {
-            let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate!.window!.rootViewController = timeLineTabbar
+            self.gotoLogin()
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -35,4 +53,17 @@ class LaunchViewController: UIViewController {
         indicator.stopAnimating()
     }
     // MARK: - UIAction
+    func gotoLogin() {
+        DispatchQueue.main.async {
+            let loginVC = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateViewController(withIdentifier: "LoginViewController")
+            self.present(loginVC, animated: true, completion: nil)
+        }
+    }
+    func gotoMainScreen() {
+        DispatchQueue.main.async {
+            let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate!.window!.rootViewController = timeLineTabbar
+        }
+    }
 }

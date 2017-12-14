@@ -12,6 +12,9 @@ enum ApiType {
     case register
     case login
     case logout
+    case token
+    case getChatRoom
+    case dowloadImage
 }
 enum HttpMethod: String {
     case post = "POST"
@@ -36,13 +39,21 @@ struct AppAPI {
             url = "/login"
         case .logout:
             url = "/logout"
+        case .token:
+            url = "/token"
+        case .getChatRoom:
+            url = "/chatroom?page=\(param![AppKey.page] ?? 0)&page_size=\(param![AppKey.pageSize] ?? 10)"
+        case .dowloadImage:
+            if let imageURL = param![AppKey.avatarUrl] as? String {
+                return imageURL
+            }
         }
-        return url
+        return AppAPI.baseURL + url
     }
     // request login/ register
     mutating func requestURLEncoded(httpMethod: HttpMethod, param: [String: String], apiType: ApiType, completionHandle: @escaping ([String: Any]?, Error?) -> Void) {
         dataTask?.cancel()
-        let urlString = AppAPI.baseURL + self.getURL(api: apiType, param: param)
+        let urlString = self.getURL(api: apiType, param: param)
         guard let url = URL(string: urlString) else {
             return
         }
@@ -77,7 +88,7 @@ struct AppAPI {
     //
     mutating func request(httpMethod: HttpMethod, param: [String: Any]?, apiType: ApiType, completionHandle: @escaping ([String: Any]?, Error?) -> Void) {
         dataTask?.cancel()
-        let url = AppAPI.baseURL + self.getURL(api: apiType, param: param)
+        let url = self.getURL(api: apiType, param: param)
         var request = URLRequest.init(url: URL(string: url)!)
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: AppKey.contentType)
         request.setValue("application/json", forHTTPHeaderField: AppKey.accept)
@@ -89,7 +100,7 @@ struct AppAPI {
                 request.setValue(tokenString, forHTTPHeaderField: AppKey.authorization)
             }
         }
-        if param != nil {
+        if param != nil && httpMethod == .post {
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: param!, options: .prettyPrinted)
                 request.httpBody = jsonData
@@ -101,13 +112,26 @@ struct AppAPI {
             if let jsonData = data {
                 // success
                 do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: jsonData,
-                                                                      options: [])
+                    let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
                     let responseData = jsonObject as? [String: Any]
                     completionHandle(responseData, error)
                 } catch let error {
                     completionHandle(nil, error)
                 }
+            } else {
+                completionHandle(nil, error)
+            }
+        }
+        dataTask?.resume()
+    }
+    mutating func getImage( httpMethod: HttpMethod, param: [String: Any]?, apiType: ApiType, completionHandle: @escaping (AnyObject?, Error?) -> Void) {
+        let url = self.getURL(api: apiType, param: param)
+        var request = URLRequest.init(url: URL(string: url)!)
+        request.httpMethod = httpMethod.rawValue
+        dataTask = session.dataTask(with: request) { (data, _, error) in
+            if let jsonData = data {
+                // success
+                completionHandle(jsonData as AnyObject, error)
             } else {
                 completionHandle(nil, error)
             }

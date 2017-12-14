@@ -19,6 +19,7 @@
 		CC0C16301FC28062001C0FB8 /* ApplicationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C162F1FC28062001C0FB8 /* ApplicationObject.swift */; };
 		CC0C16321FC29460001C0FB8 /* UIView+Desiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C16311FC29460001C0FB8 /* UIView+Desiable.swift */; };
 		CC0C16341FC2AFF3001C0FB8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C16331FC2AFF3001C0FB8 /* SignUpViewController.swift */; };
+		CC1D1F141FE8AD5E00C9F009 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1D1F131FE8AD5E00C9F009 /* ImageCache.swift */; };
 		CC302CB41FCE388F00EE4C4F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CB31FCE388F00EE4C4F /* BaseViewController.swift */; };
 		CC302CB61FCE480600EE4C4F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CB51FCE480600EE4C4F /* BaseTableViewController.swift */; };
 		CC302CB91FCE4ACA00EE4C4F /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CB81FCE4ACA00EE4C4F /* PostItem.swift */; };
@@ -33,12 +34,14 @@
 		CC3D50261FCD019A00065D8D /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3D50251FCD019A00065D8D /* MyPage.storyboard */; };
 		CC3D50281FCD134F00065D8D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D50271FCD134F00065D8D /* ProfileTableViewController.swift */; };
 		CC3D502A1FCD152500065D8D /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D50291FCD152500065D8D /* EditProfileTableViewController.swift */; };
+		CC5029351FE250D900BBD8E1 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5029331FE250D900BBD8E1 /* ChatRoomTableViewCell.swift */; };
+		CC5029361FE250D900BBD8E1 /* ChatRoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC5029341FE250D900BBD8E1 /* ChatRoomTableViewCell.xib */; };
 		CC6B68E91FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B68E81FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift */; };
 		CC6B68F31FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B68F11FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift */; };
 		CC6B68F41FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC6B68F21FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib */; };
 		CC6B68F61FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B68F51FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift */; };
+		CC7D010E1FE76940001B2C13 /* AppApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D010D1FE76940001B2C13 /* AppApi.swift */; };
 		CC7EDBC41FCC0E1600008EFD /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7EDBC31FCC0E1600008EFD /* MainTabBarController.swift */; };
-		CCC61C471FD8CAEF0093964A /* AppAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC61C461FD8CAEF0093964A /* AppAPI.swift */; };
 		CCD36E981FBEECF70027DC49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD36E971FBEECF70027DC49 /* AppDelegate.swift */; };
 		CCD36E9D1FBEECF70027DC49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD36E9B1FBEECF70027DC49 /* Main.storyboard */; };
 		CCD36E9F1FBEECF70027DC49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCD36E9E1FBEECF70027DC49 /* Assets.xcassets */; };
@@ -78,6 +81,7 @@
 		CC0C162F1FC28062001C0FB8 /* ApplicationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationObject.swift; sourceTree = "<group>"; };
 		CC0C16311FC29460001C0FB8 /* UIView+Desiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Desiable.swift"; sourceTree = "<group>"; };
 		CC0C16331FC2AFF3001C0FB8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CC1D1F131FE8AD5E00C9F009 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		CC302CB31FCE388F00EE4C4F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CC302CB51FCE480600EE4C4F /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		CC302CB81FCE4ACA00EE4C4F /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
@@ -92,12 +96,15 @@
 		CC3D50251FCD019A00065D8D /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		CC3D50271FCD134F00065D8D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		CC3D50291FCD152500065D8D /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
+		CC5029331FE250D900BBD8E1 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
+		CC5029341FE250D900BBD8E1 /* ChatRoomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomTableViewCell.xib; sourceTree = "<group>"; };
 		CC6B68E81FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewController.swift; sourceTree = "<group>"; };
 		CC6B68F11FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewCell.swift; sourceTree = "<group>"; };
 		CC6B68F21FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLineTableViewCell.xib; sourceTree = "<group>"; };
 		CC6B68F51FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewDataSource.swift; sourceTree = "<group>"; };
+		CC7D010D1FE76940001B2C13 /* AppApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppApi.swift; sourceTree = "<group>"; };
+		CC7D010F1FE7696C001B2C13 /* AppApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppApi.swift; sourceTree = "<group>"; };
 		CC7EDBC31FCC0E1600008EFD /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		CCC61C461FD8CAEF0093964A /* AppAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAPI.swift; sourceTree = "<group>"; };
 		CCD36E941FBEECF70027DC49 /* TrainningIOS112017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainningIOS112017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD36E971FBEECF70027DC49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD36E9C1FBEECF70027DC49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -182,6 +189,7 @@
 			children = (
 				CC302CB81FCE4ACA00EE4C4F /* PostItem.swift */,
 				CC302CBA1FCE547500EE4C4F /* PostStore.swift */,
+				CC1D1F131FE8AD5E00C9F009 /* ImageCache.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +209,7 @@
 		CC31CA9C1FC56EA800C0213A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CC5029321FE250A600BBD8E1 /* ChatRoomCell */,
 				CC31CA9D1FC56EB200C0213A /* CommentCell */,
 				CC6B68EE1FC3FABA00E3DEE1 /* TimeLineCell */,
 			);
@@ -229,6 +238,15 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		CC5029321FE250A600BBD8E1 /* ChatRoomCell */ = {
+			isa = PBXGroup;
+			children = (
+				CC5029331FE250D900BBD8E1 /* ChatRoomTableViewCell.swift */,
+				CC5029341FE250D900BBD8E1 /* ChatRoomTableViewCell.xib */,
+			);
+			path = ChatRoomCell;
+			sourceTree = "<group>";
+		};
 		CC6B68EE1FC3FABA00E3DEE1 /* TimeLineCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +266,14 @@
 			path = "Login and SignUp";
 			sourceTree = "<group>";
 		};
+		CC7D01121FE769F9001B2C13 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				CC7D010F1FE7696C001B2C13 /* AppApi.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		CC7EDBBE1FCC0B3E00008EFD /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,7 +286,7 @@
 		CCC61C451FD8CAB30093964A /* NetWorking */ = {
 			isa = PBXGroup;
 			children = (
-				CCC61C461FD8CAEF0093964A /* AppAPI.swift */,
+				CC7D010D1FE76940001B2C13 /* AppApi.swift */,
 			);
 			path = NetWorking;
 			sourceTree = "<group>";
@@ -274,6 +300,7 @@
 				CCD36E951FBEECF70027DC49 /* Products */,
 				EDD21F516D0649885D8E6140 /* Pods */,
 				4AF3569E297985DF8955A0A4 /* Frameworks */,
+				CC7D01121FE769F9001B2C13 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -455,6 +482,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5029361FE250D900BBD8E1 /* ChatRoomTableViewCell.xib in Resources */,
 				CC6B68F41FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib in Resources */,
 				CC06A0FC1FC6C11C00548D25 /* Timeline.storyboard in Resources */,
 				CC31CAA11FC56ED300C0213A /* CommentTableViewCell.xib in Resources */,
@@ -656,14 +684,15 @@
 				CC0C162C1FC27D05001C0FB8 /* LoginViewController.swift in Sources */,
 				CC302CB91FCE4ACA00EE4C4F /* PostItem.swift in Sources */,
 				CC3D1C041FDE7E8600240F39 /* IndicatorManager.swift in Sources */,
+				CC5029351FE250D900BBD8E1 /* ChatRoomTableViewCell.swift in Sources */,
 				CC6B68E91FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift in Sources */,
 				CC6B68F61FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift in Sources */,
 				CC3B0A1C1FE0DCD200209DC2 /* KeyConfig.swift in Sources */,
 				CC3D50281FCD134F00065D8D /* ProfileTableViewController.swift in Sources */,
 				CC302CB41FCE388F00EE4C4F /* BaseViewController.swift in Sources */,
 				CC0C16301FC28062001C0FB8 /* ApplicationObject.swift in Sources */,
+				CC1D1F141FE8AD5E00C9F009 /* ImageCache.swift in Sources */,
 				CC0C16321FC29460001C0FB8 /* UIView+Desiable.swift in Sources */,
-				CCC61C471FD8CAEF0093964A /* AppAPI.swift in Sources */,
 				CC7EDBC41FCC0E1600008EFD /* MainTabBarController.swift in Sources */,
 				CC302CBB1FCE547500EE4C4F /* PostStore.swift in Sources */,
 				CC6B68F31FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift in Sources */,
@@ -672,6 +701,7 @@
 				CC31CA961FC51A0600C0213A /* TimeLinePostViewController.swift in Sources */,
 				CC3D502A1FCD152500065D8D /* EditProfileTableViewController.swift in Sources */,
 				CC06A0F11FC6576A00548D25 /* CommentViewController.swift in Sources */,
+				CC7D010E1FE76940001B2C13 /* AppApi.swift in Sources */,
 				CC06A0F61FC67AA700548D25 /* StatusInfoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
