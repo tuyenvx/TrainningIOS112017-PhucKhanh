@@ -36,8 +36,8 @@ class TimeLinePostViewController: BaseViewController {
     func setDefaults() {
         statusTextView.delegate = self
         if let userInfo = ApplicationObject.getUserInfo() {
-            avatarImageView.image = userInfo["avatar"] as? UIImage
-            userNamaLabel.text = userInfo["name"] as? String
+            avatarImageView.image = userInfo[AppKey.avatar] as? UIImage
+            userNamaLabel.text = userInfo[AppKey.username] as? String
         }
     }
     // MARK: - UIAction

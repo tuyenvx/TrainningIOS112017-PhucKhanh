@@ -24,32 +24,36 @@ class BaseViewController: UIViewController {
         alertWindow.addSubview(notifiView)
     }
     override func viewWillDisappear(_ animated: Bool) {
-        super .viewWillDisappear(true)
+        super .viewWillDisappear(animated)
         alertWindow.isHidden = true
     }
     @objc func hideNotifi() {
         UIView.transition(with: view, duration: 0.3, options: .curveEaseOut, animations: {
-            self.notifiView.frame = CGRect(x: 0, y: -64, width: UIScreen.main.bounds.size.width, height: 64)
-            self.alertWindow.isHidden = true
+            DispatchQueue.main.async {
+                self.notifiView.frame = CGRect(x: 0, y: -64, width: UIScreen.main.bounds.size.width, height: 64)
+                self.alertWindow.isHidden = true
+            }
         }, completion: nil)
     }
 }
 extension BaseViewController {
     func showNotification(type: NotificationType, message: String) {
         NSObject.cancelPreviousPerformRequests(withTarget: hideNotifi())
-        notifiView.isHidden = false
-        switch type {
-        case .error:
-            notifiView.backgroundColor = UIColor.red
-        default:
-            notifiView.backgroundColor = UIColor.blue
+        DispatchQueue.main.async {
+            self.notifiView.isHidden = false
+            switch type {
+            case .error:
+                self.notifiView.backgroundColor = UIColor.red
+            default:
+                self.notifiView.backgroundColor = UIColor.blue
+            }
+            self.messageLabel.text = message
+            UIView.transition(with: self.view, duration: 0.3, options: .curveEaseIn, animations: {
+                self.notifiView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64)
+                self.alertWindow.makeKeyAndVisible()
+            }, completion: { _ in
+                self.perform(#selector(self.hideNotifi), with: nil, afterDelay: 3.0)
+            })
         }
-        messageLabel.text = message
-        UIView.transition(with: view, duration: 0.3, options: .curveEaseIn, animations: {
-            self.notifiView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64)
-            self.alertWindow.makeKeyAndVisible()
-        }, completion: { _ in
-            self.perform(#selector(self.hideNotifi), with: nil, afterDelay: 3.0)
-        })
     }
 }

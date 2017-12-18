@@ -46,12 +46,12 @@ class EditProfileTableViewController: BaseTableViewController {
         fillData(data: userInfo)
     }
     func fillData(data: [String: Any]) {
-        avatarImageView.image = data["avatar"] as? UIImage
-        nameTextField.text = data["name"] as? String
-        emailTextField.text = data["email"] as? String
-        phoneTextField.text = data["phone"] as? String
-        birthDayTextField.text = data["birthDay"] as? String
-        addressTextField.text = data["address"] as? String
+        avatarImageView.image = data[AppKey.avatar] as? UIImage
+        nameTextField.text = data[AppKey.username] as? String
+        emailTextField.text = data[AppKey.email] as? String
+        phoneTextField.text = data[AppKey.phone] as? String
+        birthDayTextField.text = data[AppKey.birthDay] as? String
+        addressTextField.text = data[AppKey.address] as? String
     }
     func createDatePickerView() -> UIView {
         let datePickerView = UIView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 230))
@@ -61,7 +61,7 @@ class EditProfileTableViewController: BaseTableViewController {
         let seperatorLine = UIView.init(frame: CGRect(x: 0, y: 50, width: datePickerView.frame.width, height: 1))
         birthDayDatePicker.maximumDate = Date()
         birthDayDatePicker.minimumDate = dateFormater.date(from: "01/01/1890")
-        if let str = userInfo["birthDay"] as? String {
+        if let str = userInfo[AppKey.birthDay] as? String {
             let birthDay = dateFormater.date(from: str)
             birthDayDatePicker.date = birthDay!
         }
@@ -120,13 +120,13 @@ class EditProfileTableViewController: BaseTableViewController {
         if birthDayTextField.text?.count == 0 {
             return
         }
-        userInfo["avatar"] = avatarImageView.image
-        userInfo["name"] = nameTextField.text
-        userInfo["address"] = addressTextField.text
-        userInfo["phone"] = phoneTextField.text
-        userInfo["birthDay"] = birthDayTextField.text
-        userInfo["email"] = emailTextField.text
-        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: userInfo), forKey: "userInfo")
+        userInfo[AppKey.avatar] = avatarImageView.image
+        userInfo[AppKey.username] = nameTextField.text
+        userInfo[AppKey.address] = addressTextField.text
+        userInfo[AppKey.phone] = phoneTextField.text
+        userInfo[AppKey.birthDay] = birthDayTextField.text
+        userInfo[AppKey.email] = emailTextField.text
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: userInfo), forKey: AppKey.userinfo)
         UserDefaults.standard.synchronize()
         showNotification(type: .info, message: "Update profile success!")
         navigationController?.popViewController(animated: true)

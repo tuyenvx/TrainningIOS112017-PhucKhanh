@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SignUpViewControllerDelegate: class {
+    func signupSuccess()
+}
+
 class SignUpViewController: BaseViewController {
     @IBOutlet weak private var stackView: UIStackView!
     @IBOutlet weak private var topConstraint: NSLayoutConstraint!
@@ -17,8 +21,12 @@ class SignUpViewController: BaseViewController {
     @IBOutlet weak private var passWordTextField: UITextField!
     @IBOutlet weak private var avatarImageView: UIImageView!
     @IBOutlet weak private var addPhotoLabel: UILabel!
-    var keyBoardHeigt: CGFloat = 0
+    weak var delegate: SignUpViewControllerDelegate?
+    var keyBoardHeight: CGFloat = 0
     var stackFrame: CGRect = CGRect()
+    var registerApi = AppAPI()
+    @IBOutlet weak private var backButton: UIButton!
+    @IBOutlet weak private var registerButton: UIButton!
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +97,10 @@ class SignUpViewController: BaseViewController {
             showNotification(type: .error, message: "Please fill your email address")
             return
         }
+        if !isValidEmail(testStr: emailTextField.text!) {
+            showNotification(type: .error, message: "Email not correct, please enter the correct email")
+            return
+        }
         if phoneTextField.text?.count == 0 {
             showNotification(type: .error, message: "Please fill your phone number")
             return
@@ -98,19 +110,45 @@ class SignUpViewController: BaseViewController {
             return
         }
         var userInfo: [String: Any] = [String: Any]()
-        userInfo["name"] = nameTextField.text
-        userInfo["avatar"] = avatarImageView.image
-        userInfo["email"] = emailTextField.text
-        userInfo["phone"] = phoneTextField.text
+        userInfo[AppKey.username] = nameTextField.text
+        userInfo[AppKey.avatar] = avatarImageView.image
+        userInfo[AppKey.email] = emailTextField.text
+        userInfo[AppKey.phone] = phoneTextField.text
         ApplicationObject.setUserInfo(userInfo: userInfo)
         view.endEditing(true)
-        showMainTab()
+        requestRegister()
     }
     // MARK: - Action
-    func showMainTab() {
-        let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate!.window!.rootViewController = timeLineTabbar
+    func requestRegister() {
+        setAllButtonEnable(isEnable: false)
+        IndicatorManager.showIndicatorView()
+        var param = [String: Any]()
+        param[AppKey.username] = nameTextField.text
+        param[AppKey.password] = passWordTextField.text
+        param[AppKey.email] = emailTextField.text
+        registerApi.request(httpMethod: .post, param: param, apiType: .register) { (data, error) in
+            IndicatorManager.hideIndicatorView()
+            self.setAllButtonEnable(isEnable: true)
+            if let responseData: [String: Any] = data {
+                if responseData[AppKey.success] as? Int == 1 {
+                    self.delegate?.signupSuccess()
+                    self.showLogin()
+                } else {
+                    guard let errorMessage = responseData[AppKey.message] as? String else {
+                        return
+                    }
+                    self.showNotification(type: .error, message: errorMessage)
+                }
+            } else {
+                print(error as Any)
+                self.showNotification(type: .error, message: "Can't register, please try again!")
+            }
+        }
+    }
+    func showLogin() {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
         let pickerView = UIImagePickerController.init()
@@ -118,6 +156,17 @@ class SignUpViewController: BaseViewController {
         pickerView.allowsEditing = true
         pickerView.delegate = self
         present(pickerView, animated: true, completion: nil)
+    }
+    func isValidEmail(testStr: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
+    func setAllButtonEnable(isEnable: Bool) {
+        DispatchQueue.main.async {
+            self.backButton.isEnabled = isEnable
+            self.registerButton.isEnabled = isEnable
+        }
     }
     // MARK: - Keyboard
     func addKeyBoardNotifi() {
@@ -131,7 +180,7 @@ class SignUpViewController: BaseViewController {
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
-            keyBoardHeigt = keyboardRectangle.height
+            keyBoardHeight = keyboardRectangle.height
             var textField = UIView()
             for subview: UIView in stackView.subviews where subview.isFirstResponder == true && subview.isKind(of: UITextField.self) {
                 textField = subview
@@ -145,7 +194,7 @@ class SignUpViewController: BaseViewController {
         }, completion: nil)
     }
     func changeViewForKeyBoard(textField: UIView) {
-        let distance = stackFrame.origin.y + textField.frame.size.height + textField.frame.origin.y + keyBoardHeigt + 15  - view.frame.size.height
+        let distance = stackFrame.origin.y + textField.frame.size.height + textField.frame.origin.y + keyBoardHeight + 15  - view.frame.size.height
         if distance > 0 {
             UIView.transition(with: self.view, duration: 2.5, options: .allowAnimatedContent, animations: {
                 self.topConstraint.constant =  self.view.frame.size.height * 0.09 - distance

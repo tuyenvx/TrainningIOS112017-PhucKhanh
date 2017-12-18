@@ -17,9 +17,13 @@ class LaunchViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if true {
+        if UserDefaults.standard.value(forKey: AppKey.token) == nil {
             let loginVC = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateViewController(withIdentifier: "LoginViewController")
             self.present(loginVC, animated: true, completion: nil)
+        } else {
+            let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate!.window!.rootViewController = timeLineTabbar
         }
     }
     override func viewWillAppear(_ animated: Bool) {

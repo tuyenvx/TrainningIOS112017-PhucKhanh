@@ -70,7 +70,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="wnC-Ef-UHR"/>
                                         </constraints>
-                                        <state key="normal" title="Pasword">
+                                        <state key="normal" title="Password">
                                             <color key="titleColor" red="0.96078431369999995" green="0.95686274510000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
@@ -190,7 +190,9 @@
                     <connections>
                         <outlet property="centerVerticalConstraint" destination="C0e-9B-qRq" id="Fb8-RQ-cjS"/>
                         <outlet property="emailTextField" destination="Uhs-5Q-NXY" id="PPJ-qH-tpI"/>
+                        <outlet property="loginButton" destination="tpC-iS-wal" id="4Dn-ol-Tgc"/>
                         <outlet property="passWordTextField" destination="3St-sp-yVA" id="LwH-BD-sFQ"/>
+                        <outlet property="registerButton" destination="RYi-Gw-IG9" id="Hpz-Qv-ngu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHJ-N5-h6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -274,7 +276,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="1"/>
@@ -431,10 +433,12 @@
                     <connections>
                         <outlet property="addPhotoLabel" destination="z5c-3u-fea" id="nUb-ox-4j0"/>
                         <outlet property="avatarImageView" destination="DCI-1p-reJ" id="ge8-vN-uwN"/>
+                        <outlet property="backButton" destination="kFX-kZ-mLx" id="0fg-Te-J8L"/>
                         <outlet property="emailTextField" destination="I8l-CE-LF7" id="6T2-CH-iWh"/>
                         <outlet property="nameTextField" destination="Juk-Yi-xxQ" id="KER-Xf-9cK"/>
                         <outlet property="passWordTextField" destination="aCC-Nn-4Hr" id="ghG-8i-Xad"/>
                         <outlet property="phoneTextField" destination="Jnc-zt-l19" id="tWE-kl-LWt"/>
+                        <outlet property="registerButton" destination="EwO-s9-lA5" id="stC-Y5-AWj"/>
                         <outlet property="stackView" destination="MUI-QZ-BMV" id="yhP-bl-dNe"/>
                         <outlet property="topConstraint" destination="yvx-Hq-IWK" id="xMO-k8-oDA"/>
                     </connections>
