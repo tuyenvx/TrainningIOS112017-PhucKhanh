@@ -19,6 +19,9 @@
 		CC0C16301FC28062001C0FB8 /* ApplicationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C162F1FC28062001C0FB8 /* ApplicationObject.swift */; };
 		CC0C16321FC29460001C0FB8 /* UIView+Desiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C16311FC29460001C0FB8 /* UIView+Desiable.swift */; };
 		CC0C16341FC2AFF3001C0FB8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C16331FC2AFF3001C0FB8 /* SignUpViewController.swift */; };
+		CC1D1F181FE8B6D200C9F009 /* TrainningIOS112017.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC1D1F161FE8B6D200C9F009 /* TrainningIOS112017.xcdatamodeld */; };
+		CC1D1F4A1FE8F34500C9F009 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1D1F491FE8F34500C9F009 /* UserStore.swift */; };
+		CC1D1F4C1FE8F8CE00C9F009 /* ChatroomStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1D1F4B1FE8F8CE00C9F009 /* ChatroomStore.swift */; };
 		CC302CB41FCE388F00EE4C4F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CB31FCE388F00EE4C4F /* BaseViewController.swift */; };
 		CC302CB61FCE480600EE4C4F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CB51FCE480600EE4C4F /* BaseTableViewController.swift */; };
 		CC302CB91FCE4ACA00EE4C4F /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC302CB81FCE4ACA00EE4C4F /* PostItem.swift */; };
@@ -78,6 +81,9 @@
 		CC0C162F1FC28062001C0FB8 /* ApplicationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationObject.swift; sourceTree = "<group>"; };
 		CC0C16311FC29460001C0FB8 /* UIView+Desiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Desiable.swift"; sourceTree = "<group>"; };
 		CC0C16331FC2AFF3001C0FB8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CC1D1F171FE8B6D200C9F009 /* TrainningIOS112017.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrainningIOS112017.xcdatamodel; sourceTree = "<group>"; };
+		CC1D1F491FE8F34500C9F009 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		CC1D1F4B1FE8F8CE00C9F009 /* ChatroomStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomStore.swift; sourceTree = "<group>"; };
 		CC302CB31FCE388F00EE4C4F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CC302CB51FCE480600EE4C4F /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		CC302CB81FCE4ACA00EE4C4F /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
@@ -177,11 +183,21 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		CC1D1F151FE8B6AF00C9F009 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CC1D1F161FE8B6D200C9F009 /* TrainningIOS112017.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		CC302CB71FCE4A0E00EE4C4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				CC302CB81FCE4ACA00EE4C4F /* PostItem.swift */,
 				CC302CBA1FCE547500EE4C4F /* PostStore.swift */,
+				CC1D1F491FE8F34500C9F009 /* UserStore.swift */,
+				CC1D1F4B1FE8F8CE00C9F009 /* ChatroomStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +306,7 @@
 		CCD36E961FBEECF70027DC49 /* TrainningIOS112017 */ = {
 			isa = PBXGroup;
 			children = (
+				CC1D1F151FE8B6AF00C9F009 /* CoreData */,
 				CCC61C451FD8CAB30093964A /* NetWorking */,
 				CC302CB71FCE4A0E00EE4C4F /* Model */,
 				CC31CA9C1FC56EA800C0213A /* Cell */,
@@ -654,6 +671,7 @@
 				CC31CAA01FC56ED300C0213A /* CommentTableViewCell.swift in Sources */,
 				CC0C16341FC2AFF3001C0FB8 /* SignUpViewController.swift in Sources */,
 				CC0C162C1FC27D05001C0FB8 /* LoginViewController.swift in Sources */,
+				CC1D1F4C1FE8F8CE00C9F009 /* ChatroomStore.swift in Sources */,
 				CC302CB91FCE4ACA00EE4C4F /* PostItem.swift in Sources */,
 				CC3D1C041FDE7E8600240F39 /* IndicatorManager.swift in Sources */,
 				CC6B68E91FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift in Sources */,
@@ -661,6 +679,7 @@
 				CC3B0A1C1FE0DCD200209DC2 /* KeyConfig.swift in Sources */,
 				CC3D50281FCD134F00065D8D /* ProfileTableViewController.swift in Sources */,
 				CC302CB41FCE388F00EE4C4F /* BaseViewController.swift in Sources */,
+				CC1D1F4A1FE8F34500C9F009 /* UserStore.swift in Sources */,
 				CC0C16301FC28062001C0FB8 /* ApplicationObject.swift in Sources */,
 				CC0C16321FC29460001C0FB8 /* UIView+Desiable.swift in Sources */,
 				CCC61C471FD8CAEF0093964A /* AppAPI.swift in Sources */,
@@ -668,6 +687,7 @@
 				CC302CBB1FCE547500EE4C4F /* PostStore.swift in Sources */,
 				CC6B68F31FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift in Sources */,
 				CCD36E981FBEECF70027DC49 /* AppDelegate.swift in Sources */,
+				CC1D1F181FE8B6D200C9F009 /* TrainningIOS112017.xcdatamodeld in Sources */,
 				CC302CBD1FCE8A3600EE4C4F /* ActionPostStatusTableViewController.swift in Sources */,
 				CC31CA961FC51A0600C0213A /* TimeLinePostViewController.swift in Sources */,
 				CC3D502A1FCD152500065D8D /* EditProfileTableViewController.swift in Sources */,
@@ -974,6 +994,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CC1D1F161FE8B6D200C9F009 /* TrainningIOS112017.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CC1D1F171FE8B6D200C9F009 /* TrainningIOS112017.xcdatamodel */,
+			);
+			currentVersion = CC1D1F171FE8B6D200C9F009 /* TrainningIOS112017.xcdatamodel */;
+			path = TrainningIOS112017.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CCD36E8C1FBEECF70027DC49 /* Project object */;
 }
