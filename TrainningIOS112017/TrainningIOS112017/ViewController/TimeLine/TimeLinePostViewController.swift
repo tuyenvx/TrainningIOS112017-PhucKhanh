@@ -162,7 +162,7 @@ extension TimeLinePostViewController: UITextViewDelegate {
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.count == 0 {
-            textView.text = "what's on your minds?"
+            textView.text = "Enter the chat room name and it's description in next line"
             textView.textColor = UIColor.lightGray
             hasStatus = false
         }

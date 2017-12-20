@@ -308,6 +308,209 @@
             </objects>
             <point key="canvasLocation" x="1148" y="356.67166416791605"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="h8x-gO-CMp">
+            <objects>
+                <navigationController storyboardIdentifier="CreateChatRoomNavi" id="mQs-Tn-zFd" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hzP-AL-Z32">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QgJ-tn-SY5" kind="relationship" relationship="rootViewController" id="FUV-bS-xsp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSi-pS-D8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1822" y="-316"/>
+        </scene>
+        <!--Create Chatroom-->
+        <scene sceneID="rJN-cC-2Ko">
+            <objects>
+                <viewController storyboardIdentifier="CreateChatroomViewController" id="QgJ-tn-SY5" customClass="CreateChatroomViewController" customModule="TrainningIOS112017" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p6U-Us-Jl0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="caq-7b-rGx">
+                                <rect key="frame" x="14" y="295.5" width="346" height="140"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chatroom Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nJK-tY-ECb">
+                                        <rect key="frame" x="0.0" y="0.0" width="346" height="40"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UWQ-dP-ZGh">
+                                        <rect key="frame" x="0.0" y="50" width="346" height="40"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXW-UL-Mc1">
+                                        <rect key="frame" x="0.0" y="100" width="346" height="40"/>
+                                        <color key="backgroundColor" red="0.15150535109999999" green="0.68080806729999999" blue="0.37881216410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Create chatroom">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="createChatroom:" destination="QgJ-tn-SY5" eventType="touchUpInside" id="O6J-Lm-hdX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="icq-9b-Ta3"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQD-YG-vhN">
+                                <rect key="frame" x="0.0" y="64" width="375" height="231.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select avatar" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZF0-xm-nwj">
+                                        <rect key="frame" x="127" y="56" width="120" height="120"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x7o-c6-DIg">
+                                        <rect key="frame" x="127.5" y="56" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="x7o-c6-DIg" secondAttribute="height" multiplier="1:1" id="mhq-sz-Vpj"/>
+                                            <constraint firstAttribute="height" priority="999" constant="120" id="yTd-5y-1jE"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJJ-cp-nWk">
+                                        <rect key="frame" x="127.5" y="56" width="120" height="120"/>
+                                        <connections>
+                                            <action selector="selectChatroomAvatar:" destination="QgJ-tn-SY5" eventType="touchUpInside" id="7b2-sf-SZ5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ZF0-xm-nwj" firstAttribute="leading" secondItem="x7o-c6-DIg" secondAttribute="leading" id="2Hi-LF-nOd"/>
+                                    <constraint firstItem="ZF0-xm-nwj" firstAttribute="bottom" secondItem="x7o-c6-DIg" secondAttribute="bottom" id="4e6-fJ-Der"/>
+                                    <constraint firstItem="oJJ-cp-nWk" firstAttribute="leading" secondItem="x7o-c6-DIg" secondAttribute="leading" id="BFO-cj-mO9"/>
+                                    <constraint firstItem="ZF0-xm-nwj" firstAttribute="top" secondItem="x7o-c6-DIg" secondAttribute="top" id="Ruq-9K-h5M"/>
+                                    <constraint firstItem="x7o-c6-DIg" firstAttribute="centerY" secondItem="QQD-YG-vhN" secondAttribute="centerY" id="SYj-Yc-ZVO"/>
+                                    <constraint firstItem="oJJ-cp-nWk" firstAttribute="top" secondItem="x7o-c6-DIg" secondAttribute="top" id="XgB-Dh-E2S"/>
+                                    <constraint firstItem="oJJ-cp-nWk" firstAttribute="bottom" secondItem="x7o-c6-DIg" secondAttribute="bottom" id="cRP-r7-kh6"/>
+                                    <constraint firstItem="x7o-c6-DIg" firstAttribute="centerX" secondItem="QQD-YG-vhN" secondAttribute="centerX" id="nVo-d4-gGl"/>
+                                    <constraint firstItem="oJJ-cp-nWk" firstAttribute="trailing" secondItem="x7o-c6-DIg" secondAttribute="trailing" id="rus-Ws-iVM"/>
+                                    <constraint firstItem="ZF0-xm-nwj" firstAttribute="trailing" secondItem="x7o-c6-DIg" secondAttribute="trailing" id="trj-sO-cEu"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HY9-W3-vGT" firstAttribute="trailing" secondItem="caq-7b-rGx" secondAttribute="trailing" constant="15" id="Age-Z9-88F"/>
+                            <constraint firstItem="caq-7b-rGx" firstAttribute="top" secondItem="QQD-YG-vhN" secondAttribute="bottom" id="CHD-Ip-dcG"/>
+                            <constraint firstItem="QQD-YG-vhN" firstAttribute="top" secondItem="HY9-W3-vGT" secondAttribute="top" id="DGm-yo-Bd9"/>
+                            <constraint firstItem="caq-7b-rGx" firstAttribute="centerX" secondItem="HY9-W3-vGT" secondAttribute="centerX" id="JVO-Fn-gdO"/>
+                            <constraint firstItem="caq-7b-rGx" firstAttribute="centerY" secondItem="HY9-W3-vGT" secondAttribute="centerY" id="jaK-8v-H8J"/>
+                            <constraint firstItem="HY9-W3-vGT" firstAttribute="trailing" secondItem="QQD-YG-vhN" secondAttribute="trailing" id="oNK-AG-7eE"/>
+                            <constraint firstItem="QQD-YG-vhN" firstAttribute="leading" secondItem="HY9-W3-vGT" secondAttribute="leading" id="w8p-Lk-Su0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HY9-W3-vGT"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Chatroom" id="zV3-d8-1mi">
+                        <barButtonItem key="backBarButtonItem" title=" " id="9B7-LI-9TO"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="sY6-Sd-njN">
+                            <connections>
+                                <action selector="back:" destination="QgJ-tn-SY5" id="1PO-j8-qut"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backButton" destination="sY6-Sd-njN" id="9mb-pM-Zwy"/>
+                        <outlet property="chatroomAvatarImageView" destination="x7o-c6-DIg" id="bCg-Vu-l1b"/>
+                        <outlet property="chatroomNameTextField" destination="nJK-tY-ECb" id="Dwh-6m-wVJ"/>
+                        <outlet property="createChatroomButton" destination="oXW-UL-Mc1" id="rqI-ih-PTP"/>
+                        <outlet property="descriptionTextField" destination="UWQ-dP-ZGh" id="p4g-bf-yNN"/>
+                        <outlet property="selectChatroomAvatarButton" destination="oJJ-cp-nWk" id="Sol-Ym-Yly"/>
+                        <outlet property="stackViewCentrerYConstraint" destination="jaK-8v-H8J" id="Yur-Ta-tWc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ke-X1-nst" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2502" y="-315"/>
+        </scene>
+        <!--Select Avatar-->
+        <scene sceneID="Coj-Oq-eo6">
+            <objects>
+                <viewController storyboardIdentifier="SelectAvatarViewController" id="ry3-Q9-qSd" customClass="SelectAvatarViewController" customModule="TrainningIOS112017" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I5x-bp-mMM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ih9-Tx-y7b">
+                                <rect key="frame" x="15" y="79" width="345" height="588"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tx6-jA-8Ik">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ih9-Tx-y7b" firstAttribute="leading" secondItem="BtF-WE-FIx" secondAttribute="leading" constant="15" id="Ep0-9Y-Eb3"/>
+                            <constraint firstItem="BtF-WE-FIx" firstAttribute="bottom" secondItem="ih9-Tx-y7b" secondAttribute="bottom" id="XM9-Xj-5rv"/>
+                            <constraint firstItem="BtF-WE-FIx" firstAttribute="trailing" secondItem="ih9-Tx-y7b" secondAttribute="trailing" constant="15" id="fpz-kx-376"/>
+                            <constraint firstItem="ih9-Tx-y7b" firstAttribute="top" secondItem="BtF-WE-FIx" secondAttribute="top" constant="15" id="mFs-HF-Fc1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BtF-WE-FIx"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select Avatar" id="eP9-a4-RfO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="ih9-Tx-y7b" id="SbL-WN-ZKd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="msO-bw-yEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3181.5999999999999" y="-316.19190404797604"/>
+        </scene>
         <!--Time Line Post View Controller-->
         <scene sceneID="EFn-da-yg0">
             <objects>
@@ -373,7 +576,7 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="532"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VG9-0t-cJe">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="133.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="155"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8k-Yt-kgR">
                                                 <rect key="frame" x="0.0" y="0.0" width="367" height="60"/>
@@ -517,25 +720,18 @@
                                                     <constraint firstItem="v8h-rd-HHJ" firstAttribute="top" secondItem="Pmg-Ea-f2H" secondAttribute="top" id="jHj-jZ-sZA"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="what's on your mind?" translatesAutoresizingMaskIntoConstraints="NO" id="Taw-HY-Zgp">
-                                                <rect key="frame" x="15" y="68" width="345" height="37.5"/>
+                                            <textView clipsSubviews="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Enter the chat room name and it's description in next line" translatesAutoresizingMaskIntoConstraints="NO" id="Taw-HY-Zgp">
+                                                <rect key="frame" x="15" y="68" width="345" height="59"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="ADn-s3-iKd"/>
                                                 </constraints>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                        <color key="value" red="0.64742827420000004" green="0.6713513136" blue="0.71169549229999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="_placeholderLabel.text" value="What's on your mind?"/>
-                                                </userDefinedRuntimeAttributes>
                                             </textView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7uS-4Z-wtV">
-                                                <rect key="frame" x="15" y="125.5" width="345" height="0.0"/>
+                                                <rect key="frame" x="15" y="147" width="345" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="0Ty-6L-udF"/>
                                                 </constraints>

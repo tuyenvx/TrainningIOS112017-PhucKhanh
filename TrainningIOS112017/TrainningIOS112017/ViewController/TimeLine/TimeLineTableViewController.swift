@@ -65,8 +65,8 @@ class TimeLineTableViewController: BaseTableViewController {
     }
     // MARK: - UIAction
     @IBAction func postStatus(_ sender: UIButton) {
-        let timeLinePostVC = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateViewController(withIdentifier: "TimeLinePostViewController") as? TimeLinePostViewController
-        present(timeLinePostVC!, animated: true, completion: nil)
+        let createChatroomNavi = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateViewController(withIdentifier: "CreateChatRoomNavi")
+        present(createChatroomNavi, animated: true, completion: nil)
     }
     @IBAction func postPhoto(_ sender: UIButton) {
     }

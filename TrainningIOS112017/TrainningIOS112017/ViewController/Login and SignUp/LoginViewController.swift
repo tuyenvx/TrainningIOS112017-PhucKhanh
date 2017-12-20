@@ -104,7 +104,26 @@ class LoginViewController: BaseViewController {
             self.registerButton.isEnabled = isEnable
         }
     }
-    // MARK: - Keyboard
+}
+// MARK: - UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passWordTextField.becomeFirstResponder()
+        } else {
+            login(UIButton())
+        }
+        return true
+    }
+}
+// MARK: - Signup ViewController Delegate
+extension LoginViewController: SignUpViewControllerDelegate {
+    func signupSuccess() {
+        showNotification(type: .info, message: "RegisterSuccess, please login!")
+    }
+}
+// MARK: - Keyboard
+extension LoginViewController {
     func addKeyBoardNotifi() {
         NotificationCenter.default.addObserver( self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver( self, selector: #selector(keyBoardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -131,22 +150,5 @@ class LoginViewController: BaseViewController {
         UIView.transition(with: view, duration: 2.5, options: .allowAnimatedContent, animations: {
             self.centerVerticalConstraint.constant = 0
         }, completion: nil)
-    }
-}
-// MARK: - UITextFieldDelegate
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            passWordTextField.becomeFirstResponder()
-        } else {
-            login(UIButton())
-        }
-        return true
-    }
-}
-// MARK: - Signup ViewController Delegate
-extension LoginViewController: SignUpViewControllerDelegate {
-    func signupSuccess() {
-        showNotification(type: .info, message: "RegisterSuccess, please login!")
     }
 }

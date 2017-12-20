@@ -34,8 +34,13 @@
 		CC3D50261FCD019A00065D8D /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3D50251FCD019A00065D8D /* MyPage.storyboard */; };
 		CC3D50281FCD134F00065D8D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D50271FCD134F00065D8D /* ProfileTableViewController.swift */; };
 		CC3D502A1FCD152500065D8D /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D50291FCD152500065D8D /* EditProfileTableViewController.swift */; };
+		CC464E521FEC97D1004F1858 /* CreateChatroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC464E511FEC97D1004F1858 /* CreateChatroomViewController.swift */; };
 		CC5029351FE250D900BBD8E1 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5029331FE250D900BBD8E1 /* ChatRoomTableViewCell.swift */; };
 		CC5029361FE250D900BBD8E1 /* ChatRoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC5029341FE250D900BBD8E1 /* ChatRoomTableViewCell.xib */; };
+		CC5742D91FF23B6E0089E8B3 /* ChatRoomAvatarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5742D81FF23B6E0089E8B3 /* ChatRoomAvatarStore.swift */; };
+		CC5742DB1FF23ECB0089E8B3 /* SelectAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5742DA1FF23ECB0089E8B3 /* SelectAvatarViewController.swift */; };
+		CC5742E11FF249310089E8B3 /* SelectAvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5742DF1FF249310089E8B3 /* SelectAvatarCollectionViewCell.swift */; };
+		CC5742E21FF249310089E8B3 /* SelectAvatarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC5742E01FF249310089E8B3 /* SelectAvatarCollectionViewCell.xib */; };
 		CC6B68E91FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B68E81FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift */; };
 		CC6B68F31FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B68F11FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift */; };
 		CC6B68F41FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC6B68F21FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib */; };
@@ -96,8 +101,13 @@
 		CC3D50251FCD019A00065D8D /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		CC3D50271FCD134F00065D8D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		CC3D50291FCD152500065D8D /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
+		CC464E511FEC97D1004F1858 /* CreateChatroomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatroomViewController.swift; sourceTree = "<group>"; };
 		CC5029331FE250D900BBD8E1 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
 		CC5029341FE250D900BBD8E1 /* ChatRoomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomTableViewCell.xib; sourceTree = "<group>"; };
+		CC5742D81FF23B6E0089E8B3 /* ChatRoomAvatarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomAvatarStore.swift; sourceTree = "<group>"; };
+		CC5742DA1FF23ECB0089E8B3 /* SelectAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAvatarViewController.swift; sourceTree = "<group>"; };
+		CC5742DF1FF249310089E8B3 /* SelectAvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAvatarCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC5742E01FF249310089E8B3 /* SelectAvatarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAvatarCollectionViewCell.xib; sourceTree = "<group>"; };
 		CC6B68E81FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewController.swift; sourceTree = "<group>"; };
 		CC6B68F11FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewCell.swift; sourceTree = "<group>"; };
 		CC6B68F21FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLineTableViewCell.xib; sourceTree = "<group>"; };
@@ -190,6 +200,7 @@
 				CC302CB81FCE4ACA00EE4C4F /* PostItem.swift */,
 				CC302CBA1FCE547500EE4C4F /* PostStore.swift */,
 				CC1D1F131FE8AD5E00C9F009 /* ImageCache.swift */,
+				CC5742D81FF23B6E0089E8B3 /* ChatRoomAvatarStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,6 +213,7 @@
 				CC06A0F01FC6576A00548D25 /* CommentViewController.swift */,
 				CC7EDBC31FCC0E1600008EFD /* MainTabBarController.swift */,
 				CC302CBC1FCE8A3600EE4C4F /* ActionPostStatusTableViewController.swift */,
+				CC5742D71FF23AE70089E8B3 /* CreateChatRoom */,
 			);
 			path = TimeLine;
 			sourceTree = "<group>";
@@ -209,6 +221,7 @@
 		CC31CA9C1FC56EA800C0213A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CC5742DC1FF248E00089E8B3 /* SelectAvatarCollectionViewCell */,
 				CC5029321FE250A600BBD8E1 /* ChatRoomCell */,
 				CC31CA9D1FC56EB200C0213A /* CommentCell */,
 				CC6B68EE1FC3FABA00E3DEE1 /* TimeLineCell */,
@@ -245,6 +258,24 @@
 				CC5029341FE250D900BBD8E1 /* ChatRoomTableViewCell.xib */,
 			);
 			path = ChatRoomCell;
+			sourceTree = "<group>";
+		};
+		CC5742D71FF23AE70089E8B3 /* CreateChatRoom */ = {
+			isa = PBXGroup;
+			children = (
+				CC464E511FEC97D1004F1858 /* CreateChatroomViewController.swift */,
+				CC5742DA1FF23ECB0089E8B3 /* SelectAvatarViewController.swift */,
+			);
+			path = CreateChatRoom;
+			sourceTree = "<group>";
+		};
+		CC5742DC1FF248E00089E8B3 /* SelectAvatarCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CC5742DF1FF249310089E8B3 /* SelectAvatarCollectionViewCell.swift */,
+				CC5742E01FF249310089E8B3 /* SelectAvatarCollectionViewCell.xib */,
+			);
+			path = SelectAvatarCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		CC6B68EE1FC3FABA00E3DEE1 /* TimeLineCell */ = {
@@ -482,6 +513,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5742E21FF249310089E8B3 /* SelectAvatarCollectionViewCell.xib in Resources */,
 				CC5029361FE250D900BBD8E1 /* ChatRoomTableViewCell.xib in Resources */,
 				CC6B68F41FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib in Resources */,
 				CC06A0FC1FC6C11C00548D25 /* Timeline.storyboard in Resources */,
@@ -690,6 +722,7 @@
 				CC3B0A1C1FE0DCD200209DC2 /* KeyConfig.swift in Sources */,
 				CC3D50281FCD134F00065D8D /* ProfileTableViewController.swift in Sources */,
 				CC302CB41FCE388F00EE4C4F /* BaseViewController.swift in Sources */,
+				CC464E521FEC97D1004F1858 /* CreateChatroomViewController.swift in Sources */,
 				CC0C16301FC28062001C0FB8 /* ApplicationObject.swift in Sources */,
 				CC1D1F141FE8AD5E00C9F009 /* ImageCache.swift in Sources */,
 				CC0C16321FC29460001C0FB8 /* UIView+Desiable.swift in Sources */,
@@ -698,11 +731,14 @@
 				CC6B68F31FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift in Sources */,
 				CCD36E981FBEECF70027DC49 /* AppDelegate.swift in Sources */,
 				CC302CBD1FCE8A3600EE4C4F /* ActionPostStatusTableViewController.swift in Sources */,
+				CC5742DB1FF23ECB0089E8B3 /* SelectAvatarViewController.swift in Sources */,
 				CC31CA961FC51A0600C0213A /* TimeLinePostViewController.swift in Sources */,
 				CC3D502A1FCD152500065D8D /* EditProfileTableViewController.swift in Sources */,
 				CC06A0F11FC6576A00548D25 /* CommentViewController.swift in Sources */,
 				CC7D010E1FE76940001B2C13 /* AppApi.swift in Sources */,
 				CC06A0F61FC67AA700548D25 /* StatusInfoTableViewCell.swift in Sources */,
+				CC5742D91FF23B6E0089E8B3 /* ChatRoomAvatarStore.swift in Sources */,
+				CC5742E11FF249310089E8B3 /* SelectAvatarCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
