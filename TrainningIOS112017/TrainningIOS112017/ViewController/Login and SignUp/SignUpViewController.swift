@@ -126,20 +126,19 @@ class SignUpViewController: BaseViewController {
         param[AppKey.username] = nameTextField.text
         param[AppKey.password] = passWordTextField.text
         param[AppKey.email] = emailTextField.text
-        registerApi.request(httpMethod: .post, param: param, apiType: .register) { (data, error) in
+        registerApi.request(httpMethod: .post, param: param, apiType: .register) { (requestResult) in
             IndicatorManager.hideIndicatorView()
             self.setAllButtonEnable(isEnable: true)
-            if let responseData: [String: Any] = data {
-                if responseData[AppKey.success] as? Int == 1 {
-                    self.delegate?.signupSuccess()
-                    self.showLogin()
-                } else {
-                    guard let errorMessage = responseData[AppKey.message] as? String else {
-                        return
-                    }
-                    self.showNotification(type: .error, message: errorMessage)
+            switch requestResult {
+            case .success:
+                self.delegate?.signupSuccess()
+                self.showLogin()
+            case let .unSuccess(responseData):
+                guard let errorMessage = responseData[AppKey.message] as? String else {
+                    return
                 }
-            } else {
+                self.showNotification(type: .error, message: errorMessage)
+            case let .failure(error):
                 print(error as Any)
                 self.showNotification(type: .error, message: "Can't register, please try again!")
             }

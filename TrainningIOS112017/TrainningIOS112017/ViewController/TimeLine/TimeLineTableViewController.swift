@@ -79,41 +79,40 @@ class TimeLineTableViewController: BaseTableViewController {
             AppKey.page: String(page),
             AppKey.pageSize: String(pageSize)
         ]
-        getChatRoomAPI.request(httpMethod: .get, param: param, apiType: .getChatRoom) { (data, error) in
-            print(data as Any)
+        getChatRoomAPI.request(httpMethod: .get, param: param, apiType: .getChatRoom) { (requestResult) in
             IndicatorManager.hideIndicatorView()
-            if let responseData = data {
-                if responseData[AppKey.success] as? Int == 1 {
-                    guard let pageInfo = responseData[AppKey.pagination] as? [String: Int],
-                        let chatRoomList = responseData[AppKey.chatroom] as? [[String: Any]] else {
-                            return
-                    }
-                    if self.chatRooms.count == self.total {
-                        if self.total == pageInfo[AppKey.total]! {
-                            return
-                        }
-                    }
-                    if self.lastIndex != 0 {
-                        self.chatRooms = Array(self.chatRooms.prefix(self.chatRooms.count - self.lastIndex))
-                    }
-                    self.chatRooms.append(contentsOf: chatRoomList)
-                    self.updatePageInfo(pageInfo: pageInfo)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } else {
-                    guard let notifiMessage = responseData[AppKey.message] as? String else {
+            switch requestResult {
+            case let .success(responseData):
+                guard let pageInfo = responseData[AppKey.pagination] as? [String: Int],
+                    let chatRoomList = responseData[AppKey.chatroom] as? [[String: Any]] else {
+                        return
+                }
+                if self.chatRooms.count == self.total {
+                    if self.total == pageInfo[AppKey.total]! {
                         return
                     }
-                    self.showNotification(type: .error, message: notifiMessage)
-                    if responseData[AppKey.code] as? String == "UNAUTHORIZED" {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                            self.gotoLogin()
-                        })
-                    }
                 }
-            } else {
+                if self.lastIndex != 0 {
+                    self.chatRooms = Array(self.chatRooms.prefix(self.chatRooms.count - self.lastIndex))
+                }
+                self.chatRooms.append(contentsOf: chatRoomList)
+                self.updatePageInfo(pageInfo: pageInfo)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case let .unSuccess(responseData):
+                guard let notifiMessage = responseData[AppKey.message] as? String else {
+                    return
+                }
+                self.showNotification(type: .error, message: notifiMessage)
+                if responseData[AppKey.code] as? String == "UNAUTHORIZED" {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                        self.gotoLogin()
+                    })
+                }
+            case let .failure(error):
                 print(error as Any)
+                self.showNotification(type: .error, message: "Something went wrong, please try again")
             }
         }
     }

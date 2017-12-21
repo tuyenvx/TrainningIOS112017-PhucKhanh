@@ -56,21 +56,19 @@ class LoginViewController: BaseViewController {
             param[AppKey.username] = emailTextField.text
             param[AppKey.password] = passWordTextField.text
             IndicatorManager.showIndicatorView()
-            appApi.requestURLEncoded(httpMethod: .post, param: param, apiType: .login, completionHandle: { (data, error) in
+            appApi.requestURLEncoded(httpMethod: .post, param: param, apiType: .login, completionHandle: { (requestResult) in
                 IndicatorManager.hideIndicatorView()
                 self.setAllButtonEnable(isEnable: true)
-                if let responseData: [String: Any] = data {
-                    if responseData[AppKey.success] as? Int == 1 {
-                        UserDefaults.standard.set(responseData[AppKey.token], forKey: AppKey.token)
-                        UserDefaults.standard.synchronize()
-                        self.showMainTab()
-                    } else {
-                        guard let errorMessage = responseData[AppKey.message] as? String else {
-                            return
-                        }
-                        self.showNotification(type: .error, message: errorMessage)
+                switch requestResult {
+                case let .success(responseData):
+                    UserDefaults.standard.set(responseData[AppKey.token], forKey: AppKey.token)
+                    self.showMainTab()
+                case let .unSuccess(responseData):
+                    guard let errorMessage = responseData[AppKey.message] as? String else {
+                        return
                     }
-                } else {
+                    self.showNotification(type: .error, message: errorMessage)
+                case let .failure(error):
                     print(error as Any)
                     self.showNotification(type: .error, message: "Can't login, please try again!")
                 }

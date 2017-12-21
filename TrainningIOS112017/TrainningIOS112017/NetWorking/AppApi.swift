@@ -22,6 +22,11 @@ enum HttpMethod: String {
     case put = "PUT"
     case delete = "DELETE"
 }
+enum RequestResult {
+    case success([String: Any])
+    case unSuccess([String: Any])
+    case failure(Error?)
+}
 struct AppAPI {
     private static let baseURL = "https://thl.herokuapp.com/api/v1"
     private let session: URLSession = {
@@ -51,7 +56,7 @@ struct AppAPI {
         return AppAPI.baseURL + url
     }
     // request login/ register
-    mutating func requestURLEncoded(httpMethod: HttpMethod, param: [String: String], apiType: ApiType, completionHandle: @escaping ([String: Any]?, Error?) -> Void) {
+    mutating func requestURLEncoded(httpMethod: HttpMethod, param: [String: String], apiType: ApiType, completionHandle: @escaping (RequestResult) -> Void) {
         dataTask?.cancel()
         let urlString = self.getURL(api: apiType, param: param)
         guard let url = URL(string: urlString) else {
@@ -66,15 +71,21 @@ struct AppAPI {
             if let jsonData = data {
                 // success
                 do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: jsonData,
-                                                                      options: [])
-                    let responseData = jsonObject as? [String: Any]
-                    completionHandle(responseData, error)
+                    let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
+                    guard let responseData = jsonObject as? [String: Any] else {
+                        completionHandle(.failure(error))
+                        return
+                    }
+                    if responseData[AppKey.success] as? Int == 1 {
+                        completionHandle(.success(responseData))
+                    } else {
+                        completionHandle(.unSuccess(responseData))
+                    }
                 } catch let error {
-                    completionHandle(nil, error)
+                    completionHandle(.failure(error))
                 }
             } else {
-                completionHandle(nil, error)
+                completionHandle(.failure(error))
             }
         }
         dataTask?.resume()
@@ -85,8 +96,7 @@ struct AppAPI {
         let data = array.joined(separator: "&").data(using: String.Encoding.utf8)
         return data!
     }
-    //
-    mutating func request(httpMethod: HttpMethod, param: [String: Any]?, apiType: ApiType, completionHandle: @escaping ([String: Any]?, Error?) -> Void) {
+    mutating func request(httpMethod: HttpMethod, param: [String: Any]?, apiType: ApiType, completionHandle: @escaping (RequestResult) -> Void) {
         dataTask?.cancel()
         let url = self.getURL(api: apiType, param: param)
         var request = URLRequest.init(url: URL(string: url)!)
@@ -110,16 +120,22 @@ struct AppAPI {
         }
         dataTask = session.dataTask(with: request) { (data, _, error) in
             if let jsonData = data {
-                // success
                 do {
                     let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
-                    let responseData = jsonObject as? [String: Any]
-                    completionHandle(responseData, error)
+                    guard let responseData = jsonObject as? [String: Any] else {
+                        completionHandle(.failure(error))
+                        return
+                    }
+                    if responseData[AppKey.success] as? Int == 1 {
+                        completionHandle(.success(responseData))
+                    } else {
+                        completionHandle(.unSuccess(responseData))
+                    }
                 } catch let error {
-                    completionHandle(nil, error)
+                    completionHandle(.failure(error))
                 }
             } else {
-                completionHandle(nil, error)
+                completionHandle(.failure(error))
             }
         }
         dataTask?.resume()
