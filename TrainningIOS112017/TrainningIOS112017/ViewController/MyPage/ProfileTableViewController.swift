@@ -53,23 +53,23 @@ class ProfileTableViewController: BaseTableViewController {
     @IBAction func logout(_ sender: Any) {
         setAllButtonEnable(isEnable: false)
         IndicatorManager.showIndicatorView()
-        logoutApi.request(httpMethod: .post, param: nil, apiType: .logout) { (data, error) in
+        logoutApi.request(httpMethod: .post, param: nil, apiType: .logout) { (requestResult) in
             IndicatorManager.hideIndicatorView()
             self.setAllButtonEnable(isEnable: true)
-            if let responseData: [String: Any] = data {
-                if responseData[AppKey.success] as? Int == 1 {
-                    DispatchQueue.main.async {
-                        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-                        let loginVC = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateViewController(withIdentifier: "LoginViewController")
-                        self.present(loginVC, animated: true, completion: nil)
-                    }
-                } else {
-                    guard let errorMessage = responseData[AppKey.message] as? String else {
-                        return
-                    }
-                    self.showNotification(type: .error, message: errorMessage)
+            switch requestResult {
+            case .success:
+                DispatchQueue.main.async {
+                    UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+                    let loginVC = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateViewController(withIdentifier: "LoginViewController")
+                    self.present(loginVC, animated: true, completion: nil)
                 }
-            } else {
+            case let .unSuccess(responseData):
+                guard let errorMessage = responseData[AppKey.message] as? String else {
+                    return
+                }
+                self.showNotification(type: .error, message: errorMessage)
+            case let .failure(error):
+                self.showNotification(type: .error, message: "Some thing went wrong, please try again later")
                 print(error as Any)
             }
         }

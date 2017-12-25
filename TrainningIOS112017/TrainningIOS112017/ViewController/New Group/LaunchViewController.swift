@@ -25,17 +25,15 @@ class LaunchViewController: UIViewController {
                 AppKey.clientSecret: "client_secret",
                 AppKey.grantType: "refresh_token"
             ]
-            tokenAPI.request(httpMethod: .post, param: param, apiType: .token, completionHandle: { (data, error) in
-                if let responseData = data {
-                    if responseData[AppKey.success] as? Int == 1 {
-                        print("REFRESH TOKEN")
-                        UserDefaults.standard.set(responseData[AppKey.token], forKey: AppKey.token)
-                        UserDefaults.standard.synchronize()
-                        self.gotoMainScreen()
-                    } else {
-                        self.gotoLogin()
-                    }
-                } else {
+            tokenAPI.request(httpMethod: .post, param: param, apiType: .token, completionHandle: { (requestResult) in
+                switch requestResult {
+                case let .success(responseData):
+                    UserDefaults.standard.set(responseData[AppKey.token], forKey: AppKey.token)
+                    UserDefaults.standard.synchronize()
+                    self.gotoMainScreen()
+                case .unSuccess:
+                    self.gotoLogin()
+                case let .failure(error):
                     print(error as Any)
                     self.gotoLogin()
                 }
