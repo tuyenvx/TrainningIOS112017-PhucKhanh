@@ -62,6 +62,7 @@ class LoginViewController: BaseViewController {
                 if let responseData: [String: Any] = data {
                     if responseData[AppKey.success] as? Int == 1 {
                         UserDefaults.standard.set(responseData[AppKey.token], forKey: AppKey.token)
+                        UserDefaults.standard.synchronize()
                         self.showMainTab()
                     } else {
                         guard let errorMessage = responseData[AppKey.message] as? String else {
@@ -80,7 +81,7 @@ class LoginViewController: BaseViewController {
     }
     func showMainTab() {
         DispatchQueue.main.async {
-            let userInfo = ApplicationObject.getUserInfo()
+            var userInfo = ApplicationObject.getUserInfo()
             if userInfo == nil {
                 var info: [String: Any] = [String: Any]()
                 info[AppKey.username] = self.emailTextField.text
@@ -90,6 +91,9 @@ class LoginViewController: BaseViewController {
                 info[AppKey.email] = "irelia@framgia.com"
                 info[AppKey.phone] = "0978718305"
                 ApplicationObject.setUserInfo(userInfo: info)
+            } else {
+                userInfo![AppKey.username] = self.emailTextField.text
+                ApplicationObject.setUserInfo(userInfo: userInfo!)
             }
             let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
