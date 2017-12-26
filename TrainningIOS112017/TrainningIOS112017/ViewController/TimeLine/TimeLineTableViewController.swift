@@ -20,6 +20,7 @@ class TimeLineTableViewController: BaseTableViewController {
     var currentPage = 0
     var lastIndex = 0
     var total = 0
+    var isLoadmore = false
     //    var timeLineDataSource = TimeLineTableViewDataSource()
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -40,9 +41,10 @@ class TimeLineTableViewController: BaseTableViewController {
     }
     // MARK: - Init
     func setDefaults() {
-        tableView.bounces = false
+        initFooterView()
         tableView.register(UINib.init(nibName: "TimeLineTableViewCell", bundle: nil), forCellReuseIdentifier: "TimeLineTableViewCell")
         tableView.register(UINib.init(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatRoomTableViewCell")
+//        tableView.register(UINib.init(nibName: "LoadMoreTableViewCell", bundle: nil), forCellReuseIdentifier: "LoadMoreTableViewCell")
         tableView.estimatedRowHeight = 45
         // set up search bar
         tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
@@ -55,6 +57,15 @@ class TimeLineTableViewController: BaseTableViewController {
             self.postStore.createPost(newPost: postItem)
             self.tableView.reloadData()
         }
+    }
+    func initFooterView() {
+        let footerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: 50))
+        footerView.backgroundColor = .white
+        let indicatorview = UIActivityIndicatorView.init(frame: CGRect.init(x: footerView.frame.width/2.0 - 20, y: 10, width: 40, height: 40))
+        indicatorview.activityIndicatorViewStyle = .gray
+        footerView.addSubview(indicatorview)
+        indicatorview.startAnimating()
+        tableView.tableFooterView = footerView
     }
   // MARK: - Deinit
   deinit {
@@ -74,33 +85,39 @@ class TimeLineTableViewController: BaseTableViewController {
     }
     // MARK: - Action
     func getChatRoom(page: Int) {
-        IndicatorManager.showIndicatorView()
         let param = [
             AppKey.page: String(page),
             AppKey.pageSize: String(pageSize)
         ]
         getChatRoomAPI.request(httpMethod: .get, param: param, apiType: .getChatRoom) { (requestResult) in
-            IndicatorManager.hideIndicatorView()
             switch requestResult {
             case let .success(responseData):
                 guard let pageInfo = responseData[AppKey.pagination] as? [String: Int],
-                    let chatRoomList = responseData[AppKey.chatroom] as? [[String: Any]] else {
+                    var chatRoomList = responseData[AppKey.chatroom] as? [[String: Any]] else {
+                        self.showLoadMoreCell(isShow: false)
                         return
                 }
                 if self.chatRooms.count == self.total {
                     if self.total == pageInfo[AppKey.total]! {
+                        self.showLoadMoreCell(isShow: false)
                         return
                     }
                 }
-                if self.lastIndex != 0 {
-                    self.chatRooms = Array(self.chatRooms.prefix(self.chatRooms.count - self.lastIndex))
+                chatRoomList = Array(chatRoomList.suffix(from: self.lastIndex))
+                // index path của các chatroom mới
+                var indexPaths: [IndexPath] = [IndexPath]()
+                for row in self.chatRooms.count ..< self.chatRooms.count + chatRoomList.count {
+                    let indexPath = IndexPath.init(row: row, section: 0)
+                    indexPaths.append(indexPath)
                 }
                 self.chatRooms.append(contentsOf: chatRoomList)
                 self.updatePageInfo(pageInfo: pageInfo)
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    self.tableView.insertRows(at: indexPaths, with: .bottom)
                 }
+                self.showLoadMoreCell(isShow: false)
             case let .unSuccess(responseData):
+                self.showLoadMoreCell(isShow: false)
                 guard let notifiMessage = responseData[AppKey.message] as? String else {
                     return
                 }
@@ -111,6 +128,7 @@ class TimeLineTableViewController: BaseTableViewController {
                     })
                 }
             case let .failure(error):
+                self.showLoadMoreCell(isShow: false)
                 print(error as Any)
                 self.showNotification(type: .error, message: "Something went wrong, please try again")
             }
@@ -125,6 +143,21 @@ class TimeLineTableViewController: BaseTableViewController {
         DispatchQueue.main.async {
             let loginVC = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateViewController(withIdentifier: "LoginViewController")
             self.present(loginVC, animated: true, completion: nil)
+        }
+    }
+    // MARK: - Load more
+    func loadmoreChatroom() {
+        showLoadMoreCell(isShow: true)
+        if lastIndex == 0 {
+            currentPage += 1
+        }
+        getChatRoom(page: currentPage)
+    }
+    func showLoadMoreCell(isShow: Bool) {
+        DispatchQueue.main.async {
+            self.isLoadmore =  isShow
+            self.tableView.tableFooterView?.isHidden = !isShow
+            self.tableView.contentInset = UIEdgeInsets.init(top: -20, left: 0, bottom: !isShow ? -50 : 0, right: 0)
         }
     }
 }
@@ -145,11 +178,8 @@ extension TimeLineTableViewController {
 // MARK: - UITableView Delegate
 extension TimeLineTableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == chatRooms.count - 2 && chatRooms.count <= total {
-            if lastIndex == 0 {
-                currentPage += 1
-            }
-            getChatRoom(page: currentPage)
+        if indexPath.row == chatRooms.count - 2 && chatRooms.count <= total && isLoadmore == false {
+            loadmoreChatroom()
         }
     }
 }
@@ -169,5 +199,11 @@ extension TimeLineTableViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return true
+    }
+}
+// MARK: - TimeLineTableViewController Delegate
+extension TimeLineTableViewController {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.bounces = scrollView.contentOffset.y > 100
     }
 }
