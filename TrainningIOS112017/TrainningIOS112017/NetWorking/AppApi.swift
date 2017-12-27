@@ -15,6 +15,7 @@ enum ApiType {
     case token
     case getChatRoom
     case dowloadImage
+    case userInfo
 }
 enum HttpMethod: String {
     case post = "POST"
@@ -52,6 +53,8 @@ struct AppAPI {
             if let imageURL = param![AppKey.avatarUrl] as? String {
                 return imageURL
             }
+        case .userInfo:
+            url = "/users/me"
         }
         return AppAPI.baseURL + url
     }

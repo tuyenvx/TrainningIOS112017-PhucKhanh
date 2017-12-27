@@ -78,24 +78,40 @@ class LoginViewController: BaseViewController {
         }
     }
     func showMainTab() {
+        var userInfo = ApplicationObject.getUserInfo()
+        if userInfo == nil {
+            getUserInfo()
+        } else {
+             userInfo![AppKey.username] = self.emailTextField.text
+            ApplicationObject.setUserInfo(userInfo: userInfo!)
+        }
         DispatchQueue.main.async {
-            var userInfo = ApplicationObject.getUserInfo()
-            if userInfo == nil {
-                var info: [String: Any] = [String: Any]()
-                info[AppKey.username] = self.emailTextField.text
-                info[AppKey.avatar] = #imageLiteral(resourceName: "ava_stt")
-                info[AppKey.birthDay] = "25/12/1994"
-                info[AppKey.address] = "Handico"
-                info[AppKey.email] = "irelia@framgia.com"
-                info[AppKey.phone] = "0978718305"
-                ApplicationObject.setUserInfo(userInfo: info)
-            } else {
-                userInfo![AppKey.username] = self.emailTextField.text
-                ApplicationObject.setUserInfo(userInfo: userInfo!)
-            }
             let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
             appDelegate!.window!.rootViewController = timeLineTabbar
+        }
+    }
+    func getUserInfo() {
+        var getUserInfoApi = AppAPI()
+        getUserInfoApi.request(httpMethod: .get, param: nil, apiType: .userInfo) { (requestResult) in
+            switch requestResult {
+            case let .success(responseData):
+                guard var userInfo = responseData["user"] as? [String: Any] else {
+                    return
+                }
+                userInfo[AppKey.avatar] = #imageLiteral(resourceName: "ava_stt")
+                userInfo[AppKey.birthDay] = "25/12/1994"
+                userInfo[AppKey.address] = "Handico"
+                userInfo[AppKey.phone] = "0978718305"
+                ApplicationObject.setUserInfo(userInfo: userInfo)
+            case let .unSuccess(responseData):
+                guard let errorMessage = responseData[AppKey.message] as? String else {
+                    return
+                }
+                self.showNotification(type: .error, message: errorMessage)
+            case .failure:
+                self.showNotification(type: .error, message: "Can't load user infomation")
+            }
         }
     }
     func setAllButtonEnable(isEnable: Bool) {

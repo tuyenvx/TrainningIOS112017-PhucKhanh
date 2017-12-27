@@ -28,20 +28,25 @@ class ProfileTableViewController: BaseTableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        userInfo = ApplicationObject.getUserInfo()!
-        fillData(data: userInfo)
+        if let userInfo = ApplicationObject.getUserInfo() {
+            fillData(data: userInfo)
+        } else {
+            getUserInfo()
+        }
     }
     // MARK: - init
     func setDefaults() {
        //
     }
     func fillData(data: [String: Any]) {
-        avatarImageView.image = data[AppKey.avatar] as? UIImage
-        nameLabel.text = data[AppKey.username] as? String
-        emailLabel.text = data[AppKey.email] as? String
-        phoneLabel.text = data[AppKey.phone] as? String
-        birthDayLabel.text = data[AppKey.birthDay] as? String
-        addressLabel.text = data[AppKey.address] as? String
+        DispatchQueue.main.async {
+            self.avatarImageView.image = data[AppKey.avatar] as? UIImage
+            self.nameLabel.text = data[AppKey.username] as? String
+            self.emailLabel.text = data[AppKey.email] as? String
+            self.phoneLabel.text = data[AppKey.phone] as? String
+            self.birthDayLabel.text = data[AppKey.birthDay] as? String
+            self.addressLabel.text = data[AppKey.address] as? String
+        }
     }
     // MARK: - IBAction
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -60,6 +65,7 @@ class ProfileTableViewController: BaseTableViewController {
             case .success:
                 DispatchQueue.main.async {
                     UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+                    UserDefaults.standard.synchronize()
                     let loginVC = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateViewController(withIdentifier: "LoginViewController")
                     self.present(loginVC, animated: true, completion: nil)
                 }
@@ -79,6 +85,30 @@ class ProfileTableViewController: BaseTableViewController {
         DispatchQueue.main.async {
             self.logoutButton.isEnabled = isEnable
             self.editProfileBarButtonItem.isEnabled = isEnable
+        }
+    }
+    func getUserInfo() {
+        var getUserInfoApi = AppAPI()
+        getUserInfoApi.request(httpMethod: .get, param: nil, apiType: .userInfo) { (requestResult) in
+            switch requestResult {
+            case let .success(responseData):
+                guard var userInfo = responseData["user"] as? [String: Any] else {
+                    return
+                }
+                userInfo[AppKey.avatar] = #imageLiteral(resourceName: "ava_stt")
+                userInfo[AppKey.birthDay] = "25/12/1994"
+                userInfo[AppKey.address] = "Handico"
+                userInfo[AppKey.phone] = "0978718305"
+                ApplicationObject.setUserInfo(userInfo: userInfo)
+                self.fillData(data: userInfo)
+            case let .unSuccess(responseData):
+                guard let errorMessage = responseData[AppKey.message] as? String else {
+                    return
+                }
+                self.showNotification(type: .error, message: errorMessage)
+            case .failure:
+                self.showNotification(type: .error, message: "Can't load user infomation")
+            }
         }
     }
 }
