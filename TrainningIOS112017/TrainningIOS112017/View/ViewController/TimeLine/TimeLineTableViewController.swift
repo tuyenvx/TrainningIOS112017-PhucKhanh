@@ -58,14 +58,16 @@ class TimeLineTableViewController: BaseTableViewController {
     }
   // MARK: - Deinit
   deinit {
-    notificationCentrer.removeObserver(postStatusObserver!)
+    if postStatusObserver != nil {
+        notificationCentrer.removeObserver(postStatusObserver!)
+    }
   }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
     // MARK: - UIAction
     @IBAction func postStatus(_ sender: UIButton) {
-        let timeLinePostVC = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateViewController(withIdentifier: "TimeLinePostViewController") as? TimeLinePostViewController
+        let timeLinePostVC = TimeLinePostViewController.loadFromStoryboard(.timeline) as? TimeLinePostViewController
         present(timeLinePostVC!, animated: true, completion: nil)
     }
     @IBAction func postPhoto(_ sender: UIButton) {
@@ -123,7 +125,7 @@ class TimeLineTableViewController: BaseTableViewController {
     }
     func gotoLogin() {
         DispatchQueue.main.async {
-            let loginVC = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateViewController(withIdentifier: "LoginViewController")
+            let loginVC = LoginViewController.loadFromStoryboard(.login)
             self.present(loginVC, animated: true, completion: nil)
         }
     }
@@ -157,7 +159,7 @@ extension TimeLineTableViewController {
 extension TimeLineTableViewController: TimeLineTableViewCellDelegate {
     func comment(index: Int) {
         print(postStore.allPosts[0])
-        if let timeLineCommentVC = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateViewController(withIdentifier: "CommentViewController") as? CommentViewController {
+        if let timeLineCommentVC = CommentViewController.loadFromStoryboard(.timeline) as? CommentViewController {
             timeLineCommentVC.item = postStore.allPosts[index]
             timeLineCommentVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(timeLineCommentVC, animated: true)

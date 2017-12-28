@@ -93,9 +93,8 @@ class LoginViewController: BaseViewController {
                 userInfo![AppKey.username] = self.emailTextField.text
                 ApplicationObject.setUserInfo(userInfo: userInfo!)
             }
-            let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate!.window!.rootViewController = timeLineTabbar
+            self.mainViewController?.createTabbar()
+            self.dismiss(animated: false, completion: nil)
         }
     }
     func setAllButtonEnable(isEnable: Bool) {

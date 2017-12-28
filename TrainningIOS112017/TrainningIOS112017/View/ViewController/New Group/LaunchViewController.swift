@@ -53,15 +53,14 @@ class LaunchViewController: UIViewController {
     // MARK: - UIAction
     func gotoLogin() {
         DispatchQueue.main.async {
-            let loginVC = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateViewController(withIdentifier: "LoginViewController")
+            let loginVC = LoginViewController.loadFromStoryboard(.login)
             self.present(loginVC, animated: true, completion: nil)
         }
     }
     func gotoMainScreen() {
         DispatchQueue.main.async {
-            let timeLineTabbar = ApplicationObject.getStoryBoardByID(storyBoardID: .timeline).instantiateInitialViewController()
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate!.window!.rootViewController = timeLineTabbar
+            self.mainViewController?.createTabbar()
+            self.dismiss(animated: false, completion: nil)
         }
     }
 }

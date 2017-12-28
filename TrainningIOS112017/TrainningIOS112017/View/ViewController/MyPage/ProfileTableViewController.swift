@@ -60,7 +60,7 @@ class ProfileTableViewController: BaseTableViewController {
             case .success:
                 DispatchQueue.main.async {
                     UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-                    let loginVC = ApplicationObject.getStoryBoardByID(storyBoardID: .login).instantiateViewController(withIdentifier: "LoginViewController")
+                    let loginVC = LoginViewController.loadFromStoryboard(.login)
                     self.present(loginVC, animated: true, completion: nil)
                 }
             case let .unSuccess(responseData):

@@ -28,6 +28,9 @@
 		CC31CA961FC51A0600C0213A /* TimeLinePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31CA951FC51A0600C0213A /* TimeLinePostViewController.swift */; };
 		CC31CAA01FC56ED300C0213A /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31CA9E1FC56ED300C0213A /* CommentTableViewCell.swift */; };
 		CC31CAA11FC56ED300C0213A /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC31CA9F1FC56ED300C0213A /* CommentTableViewCell.xib */; };
+		CC31E0D61FF476700007D6EE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCD36EA31FBEECF70027DC49 /* Info.plist */; };
+		CC31E0D81FF482410007D6EE /* UITabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31E0D71FF482410007D6EE /* UITabbarController.swift */; };
+		CC31E0DE1FF486A00007D6EE /* UIViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC31E0DD1FF486A00007D6EE /* UIViewControllerExtention.swift */; };
 		CC3A122B1FC25BF9008EEBE8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3A122A1FC25BF9008EEBE8 /* Login.storyboard */; };
 		CC3B0A1C1FE0DCD200209DC2 /* KeyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3B0A1B1FE0DCD200209DC2 /* KeyConfig.swift */; };
 		CC3D1C041FDE7E8600240F39 /* IndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D1C031FDE7E8600240F39 /* IndicatorManager.swift */; };
@@ -41,7 +44,8 @@
 		CC6B68F41FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC6B68F21FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib */; };
 		CC6B68F61FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B68F51FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift */; };
 		CC7D010E1FE76940001B2C13 /* AppApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D010D1FE76940001B2C13 /* AppApi.swift */; };
-		CC7EDBC41FCC0E1600008EFD /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7EDBC31FCC0E1600008EFD /* MainTabBarController.swift */; };
+		CC7F935F1FF3A1DD00AC0C97 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7F935E1FF3A1DD00AC0C97 /* UIViewController.swift */; };
+		CC7F93611FF3A23600AC0C97 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7F93601FF3A23600AC0C97 /* MainViewController.swift */; };
 		CCD36E981FBEECF70027DC49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD36E971FBEECF70027DC49 /* AppDelegate.swift */; };
 		CCD36E9D1FBEECF70027DC49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD36E9B1FBEECF70027DC49 /* Main.storyboard */; };
 		CCD36E9F1FBEECF70027DC49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCD36E9E1FBEECF70027DC49 /* Assets.xcassets */; };
@@ -90,6 +94,8 @@
 		CC31CA951FC51A0600C0213A /* TimeLinePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLinePostViewController.swift; sourceTree = "<group>"; };
 		CC31CA9E1FC56ED300C0213A /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		CC31CA9F1FC56ED300C0213A /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		CC31E0D71FF482410007D6EE /* UITabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabbarController.swift; sourceTree = "<group>"; };
+		CC31E0DD1FF486A00007D6EE /* UIViewControllerExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtention.swift; sourceTree = "<group>"; };
 		CC3A122A1FC25BF9008EEBE8 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		CC3B0A1B1FE0DCD200209DC2 /* KeyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyConfig.swift; sourceTree = "<group>"; };
 		CC3D1C031FDE7E8600240F39 /* IndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorManager.swift; sourceTree = "<group>"; };
@@ -103,8 +109,8 @@
 		CC6B68F21FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLineTableViewCell.xib; sourceTree = "<group>"; };
 		CC6B68F51FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineTableViewDataSource.swift; sourceTree = "<group>"; };
 		CC7D010D1FE76940001B2C13 /* AppApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppApi.swift; sourceTree = "<group>"; };
-		CC7D010F1FE7696C001B2C13 /* AppApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppApi.swift; sourceTree = "<group>"; };
-		CC7EDBC31FCC0E1600008EFD /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		CC7F935E1FF3A1DD00AC0C97 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		CC7F93601FF3A23600AC0C97 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CCD36E941FBEECF70027DC49 /* TrainningIOS112017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainningIOS112017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD36E971FBEECF70027DC49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCD36E9C1FBEECF70027DC49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,8 +184,6 @@
 				CC06A0FF1FC6C21F00548D25 /* Launch */,
 				CC7751BE1FC588EC00D0C585 /* Login and SignUp */,
 				CC31CA971FC51A0E00C0213A /* TimeLine */,
-				CC302CB31FCE388F00EE4C4F /* BaseViewController.swift */,
-				CC302CB51FCE480600EE4C4F /* BaseTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -200,7 +204,6 @@
 				CC6B68E81FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift */,
 				CC31CA951FC51A0600C0213A /* TimeLinePostViewController.swift */,
 				CC06A0F01FC6576A00548D25 /* CommentViewController.swift */,
-				CC7EDBC31FCC0E1600008EFD /* MainTabBarController.swift */,
 				CC302CBC1FCE8A3600EE4C4F /* ActionPostStatusTableViewController.swift */,
 			);
 			path = TimeLine;
@@ -227,9 +230,74 @@
 			path = CommentCell;
 			sourceTree = "<group>";
 		};
+		CC31E0D91FF486250007D6EE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CC31E0E11FF488920007D6EE /* Global */,
+				CC31E0DA1FF486330007D6EE /* Core */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		CC31E0DA1FF486330007D6EE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CC31E0E01FF488600007D6EE /* Controller */,
+				CC31E0DB1FF486780007D6EE /* Extention */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CC31E0DB1FF486780007D6EE /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				CC0C16311FC29460001C0FB8 /* UIView+Desiable.swift */,
+				CC31E0DD1FF486A00007D6EE /* UIViewControllerExtention.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		CC31E0DF1FF487D50007D6EE /* Difine */ = {
+			isa = PBXGroup;
+			children = (
+				CC3B0A1B1FE0DCD200209DC2 /* KeyConfig.swift */,
+			);
+			path = Difine;
+			sourceTree = "<group>";
+		};
+		CC31E0E01FF488600007D6EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC302CB31FCE388F00EE4C4F /* BaseViewController.swift */,
+				CC302CB51FCE480600EE4C4F /* BaseTableViewController.swift */,
+				CC7F93601FF3A23600AC0C97 /* MainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC31E0E11FF488920007D6EE /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				CC3D1C031FDE7E8600240F39 /* IndicatorManager.swift */,
+				CC0C162F1FC28062001C0FB8 /* ApplicationObject.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		CC31E0E21FF488D00007D6EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC31CA9C1FC56EA800C0213A /* Cell */,
+				CC3A122C1FC25BFE008EEBE8 /* Storyboard */,
+				CC0C162A1FC27CEB001C0FB8 /* ViewController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CC3A122C1FC25BFE008EEBE8 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				CCD36EA01FBEECF70027DC49 /* LaunchScreen.storyboard */,
 				CCD36E9B1FBEECF70027DC49 /* Main.storyboard */,
 				CC3A122A1FC25BF9008EEBE8 /* Login.storyboard */,
 				CC06A0FB1FC6C11C00548D25 /* Timeline.storyboard */,
@@ -266,14 +334,6 @@
 			path = "Login and SignUp";
 			sourceTree = "<group>";
 		};
-		CC7D01121FE769F9001B2C13 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				CC7D010F1FE7696C001B2C13 /* AppApi.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		CC7EDBBE1FCC0B3E00008EFD /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +341,34 @@
 				CC3D50291FCD152500065D8D /* EditProfileTableViewController.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		CC7F935B1FF3A17A00AC0C97 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CCD36EA31FBEECF70027DC49 /* Info.plist */,
+				CCD36E9E1FBEECF70027DC49 /* Assets.xcassets */,
+			);
+			name = Resources;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		CC7F935C1FF3A1BA00AC0C97 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CC31E0DF1FF487D50007D6EE /* Difine */,
+				CC7F935D1FF3A1CA00AC0C97 /* Extention */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		CC7F935D1FF3A1CA00AC0C97 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				CC7F935E1FF3A1DD00AC0C97 /* UIViewController.swift */,
+				CC31E0D71FF482410007D6EE /* UITabbarController.swift */,
+			);
+			path = Extention;
 			sourceTree = "<group>";
 		};
 		CCC61C451FD8CAB30093964A /* NetWorking */ = {
@@ -300,7 +388,6 @@
 				CCD36E951FBEECF70027DC49 /* Products */,
 				EDD21F516D0649885D8E6140 /* Pods */,
 				4AF3569E297985DF8955A0A4 /* Frameworks */,
-				CC7D01121FE769F9001B2C13 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -317,19 +404,13 @@
 		CCD36E961FBEECF70027DC49 /* TrainningIOS112017 */ = {
 			isa = PBXGroup;
 			children = (
+				CCD36E971FBEECF70027DC49 /* AppDelegate.swift */,
+				CC7F935B1FF3A17A00AC0C97 /* Resources */,
+				CC7F935C1FF3A1BA00AC0C97 /* Helper */,
+				CC31E0D91FF486250007D6EE /* Utilities */,
 				CCC61C451FD8CAB30093964A /* NetWorking */,
 				CC302CB71FCE4A0E00EE4C4F /* Model */,
-				CC31CA9C1FC56EA800C0213A /* Cell */,
-				CC0C162A1FC27CEB001C0FB8 /* ViewController */,
-				CC3A122C1FC25BFE008EEBE8 /* Storyboard */,
-				CCD36E971FBEECF70027DC49 /* AppDelegate.swift */,
-				CCD36E9E1FBEECF70027DC49 /* Assets.xcassets */,
-				CCD36EA01FBEECF70027DC49 /* LaunchScreen.storyboard */,
-				CCD36EA31FBEECF70027DC49 /* Info.plist */,
-				CC0C162F1FC28062001C0FB8 /* ApplicationObject.swift */,
-				CC0C16311FC29460001C0FB8 /* UIView+Desiable.swift */,
-				CC3D1C031FDE7E8600240F39 /* IndicatorManager.swift */,
-				CC3B0A1B1FE0DCD200209DC2 /* KeyConfig.swift */,
+				CC31E0E21FF488D00007D6EE /* View */,
 			);
 			path = TrainningIOS112017;
 			sourceTree = "<group>";
@@ -482,6 +563,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC31E0D61FF476700007D6EE /* Info.plist in Resources */,
 				CC5029361FE250D900BBD8E1 /* ChatRoomTableViewCell.xib in Resources */,
 				CC6B68F41FC3FB2100E3DEE1 /* TimeLineTableViewCell.xib in Resources */,
 				CC06A0FC1FC6C11C00548D25 /* Timeline.storyboard in Resources */,
@@ -679,11 +761,14 @@
 			files = (
 				CC302CB61FCE480600EE4C4F /* BaseTableViewController.swift in Sources */,
 				CC06A0FE1FC6C21B00548D25 /* LaunchViewController.swift in Sources */,
+				CC7F935F1FF3A1DD00AC0C97 /* UIViewController.swift in Sources */,
 				CC31CAA01FC56ED300C0213A /* CommentTableViewCell.swift in Sources */,
 				CC0C16341FC2AFF3001C0FB8 /* SignUpViewController.swift in Sources */,
 				CC0C162C1FC27D05001C0FB8 /* LoginViewController.swift in Sources */,
 				CC302CB91FCE4ACA00EE4C4F /* PostItem.swift in Sources */,
+				CC7F93611FF3A23600AC0C97 /* MainViewController.swift in Sources */,
 				CC3D1C041FDE7E8600240F39 /* IndicatorManager.swift in Sources */,
+				CC31E0D81FF482410007D6EE /* UITabbarController.swift in Sources */,
 				CC5029351FE250D900BBD8E1 /* ChatRoomTableViewCell.swift in Sources */,
 				CC6B68E91FC3BC9F00E3DEE1 /* TimeLineTableViewController.swift in Sources */,
 				CC6B68F61FC40D3900E3DEE1 /* TimeLineTableViewDataSource.swift in Sources */,
@@ -693,9 +778,9 @@
 				CC0C16301FC28062001C0FB8 /* ApplicationObject.swift in Sources */,
 				CC1D1F141FE8AD5E00C9F009 /* ImageCache.swift in Sources */,
 				CC0C16321FC29460001C0FB8 /* UIView+Desiable.swift in Sources */,
-				CC7EDBC41FCC0E1600008EFD /* MainTabBarController.swift in Sources */,
 				CC302CBB1FCE547500EE4C4F /* PostStore.swift in Sources */,
 				CC6B68F31FC3FB2100E3DEE1 /* TimeLineTableViewCell.swift in Sources */,
+				CC31E0DE1FF486A00007D6EE /* UIViewControllerExtention.swift in Sources */,
 				CCD36E981FBEECF70027DC49 /* AppDelegate.swift in Sources */,
 				CC302CBD1FCE8A3600EE4C4F /* ActionPostStatusTableViewController.swift in Sources */,
 				CC31CA961FC51A0600C0213A /* TimeLinePostViewController.swift in Sources */,
@@ -872,7 +957,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TrainningIOS112017/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TrainningIOS112017/New Group/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = framgia.TrainningIOS112017;
@@ -888,7 +973,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TrainningIOS112017/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TrainningIOS112017/New Group/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = framgia.TrainningIOS112017;
